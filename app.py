@@ -1,3 +1,4 @@
+import pandas as pd
 from IPython.core.display import display
 
 from python_code.learning.data_loader import load_data
@@ -24,19 +25,17 @@ def stats(df, partition):
     return stats
 
 
-def cluster(graph):
-    louvain = Louvain()
-    partition = louvain.cluster(graph)
-    return partition
-
-
 def main():
     df = load_data()
     graph = get_graph(df)
-    partition = cluster(graph)
-    display(stats(df, partition))
+    cluster_engine = Louvain()
+    partition = cluster_engine.cluster(graph)
+    display(stats(df, partition), )
     test(df, partition)
 
 
 if __name__ == "__main__":
+    pd.set_option('display.max_rows', 500)
+    pd.set_option('display.max_columns', 500)
+    pd.set_option('display.width', 1000)
     main()

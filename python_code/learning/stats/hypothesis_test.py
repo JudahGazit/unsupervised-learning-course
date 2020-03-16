@@ -7,9 +7,9 @@ from python_code.learning.stats.cluster_stats import community_stats, add_thresh
 
 
 def split_to_groups(df):
-    g0 = df[df.g == 0].sample(n=100)
+    g0 = df[df.g == 0].sample(n=100, random_state=42)
     g0.reset_index(inplace=True)
-    g1 = df[df.g == 1].sample(n=100)
+    g1 = df[df.g == 1].sample(n=100, random_state=42)
     g1.reset_index(inplace=True)
     return g0, g1
 
