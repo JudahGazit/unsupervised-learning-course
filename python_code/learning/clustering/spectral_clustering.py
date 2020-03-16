@@ -2,7 +2,7 @@ import networkx as nx
 import pandas as pd
 import sklearn
 
-from python_code.learning.ICluster import ICluster
+from python_code.learning.clustering.ICluster import ICluster
 
 
 class SpectralClustering(ICluster):

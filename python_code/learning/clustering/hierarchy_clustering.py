@@ -2,7 +2,7 @@ import networkx as nx
 import pandas as pd
 from sklearn.cluster import AgglomerativeClustering
 
-from python_code.learning.ICluster import ICluster
+from python_code.learning.clustering.ICluster import ICluster
 
 
 class HierarchyClustering(ICluster):

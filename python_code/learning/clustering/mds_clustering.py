@@ -4,7 +4,7 @@ import pandas as pd
 from sklearn import manifold
 from sklearn.cluster import DBSCAN
 
-from python_code.learning.ICluster import ICluster
+from python_code.learning.clustering.ICluster import ICluster
 
 
 class MDSClustering(ICluster):
