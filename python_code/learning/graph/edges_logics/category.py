@@ -1,7 +1,7 @@
 from python_code.learning.graph.edges_logics.IEdgeLogic import IEdgeLogic
 
 
-class CastPriorityFactor(IEdgeLogic):
+class Category(IEdgeLogic):
     def create_edges(self, df):
         """
         This class creates edges between movies with common categories.
