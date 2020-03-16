@@ -1,6 +1,6 @@
 def community_stats(df, communities):
     df = df.copy()
-    df['community'] = df.title.apply(lambda title: communities.get(title))
+    df = df.merge(communities, on=['title'])
     df['max_raiting'] = df.averageRating
     df['min_raiting'] = df.averageRating
     df['stdRating'] = df.averageRating
@@ -30,12 +30,12 @@ def stats_threshold(stats, threshold=7.9):
     return stats_g
 
 
-def precision_recall(stats_g):
-    stats_g = stats_g.copy()
-    total_win = stats_g.win_movies.sum()
-    total_win_and_nom = stats_g.win_and_nominated_movies.sum()
-    stats_g['win_precision'] = 100 * stats_g.win_movies / stats_g.title
-    stats_g['win_recall'] = 100 * stats_g.win_movies / total_win
-    stats_g['win_nom_precision'] = 100 * stats_g.win_and_nominated_movies / stats_g.title
-    stats_g['win_nom_recall'] = 100 * stats_g.win_and_nominated_movies / total_win_and_nom
-    return stats_g
+def precision_recall(stats):
+    stats = stats.copy()
+    total_win = stats.win_movies.sum()
+    total_win_and_nom = stats.win_and_nominated_movies.sum()
+    stats['win_precision'] = 100 * stats.win_movies / stats.title
+    stats['win_recall'] = 100 * stats.win_movies / total_win
+    stats['win_nom_precision'] = 100 * stats.win_and_nominated_movies / stats.title
+    stats['win_nom_recall'] = 100 * stats.win_and_nominated_movies / total_win_and_nom
+    return stats
