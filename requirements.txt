@@ -1,4 +1,4 @@
-# requierments.txt
+# requirements.txt
 pandas
 scipy
 sklearn
