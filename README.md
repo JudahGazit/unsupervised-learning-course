@@ -2,31 +2,32 @@
 Unsupervised Learning Course - Final work, Winter 2020, BIU
 
 Project Structure: <br>
-├── README.md // YOU ARE HERE <br>
-├── requirements.txt // standard python requirements file <br>
-├── app.py // the main method for the python code <br>
-├── unsupervised.pdf // the paper summarizing the work that was done <br>
-├── data <br>
-│   └── netflix <br>
-│   <tab>    └── stage.json // the result of the data processing <br>
-│   <tab>   └── // original datasets used for the data processing <br>
-├── latex <br>
-│   └── // contains all the raw files and images making the pdf file <br>
-├── python_code // all the python code is here <br>
-│   ├── config.py <br>
-│   ├── data_prep <br>
-│   │   ├── // contains the code and the main for the data processing and preparation <br>
-│   ├── learning <br>
-│   │   ├── clustering <br>
-│   │   │   ├── // contains different algorithms used to cluster the data <br>
-│   │   ├── data_loader.py <br>
-│   │   ├── graph <br>
-│   │   │   ├── edges_logics <br>
-│   │   │   │   ├── // contains different logics used to construct the graph's edges from the data <br>
-│   │   │   ├── graph.py <br>
-│   │   └── stats <br>
-│   │       ├── // contains the hypothesis testing and the statistical analysis of the data and the clustering <br>
-
+```
+ README.md // YOU ARE HERE
+├── requirements.txt // standard python requirements file
+├── app.py // the main method for the python code
+├── unsupervised.pdf // the paper summarizing the work that was done
+├── data
+│   └── netflix
+│   <tab>    └── stage.json // the result of the data processing
+│   <tab>   └── // original datasets used for the data processing
+├── latex
+│   └── // contains all the raw files and images making the pdf file
+├── python_code // all the python code is here
+│   ├── config.py
+│   ├── data_prep
+│   │   ├── // contains the code and the main for the data processing and preparation
+│   ├── learning
+│   │   ├── clustering
+│   │   │   ├── // contains different algorithms used to cluster the data
+│   │   ├── data_loader.py
+│   │   ├── graph
+│   │   │   ├── edges_logics
+│   │   │   │   ├── // contains different logics used to construct the graph's edges from the data
+│   │   │   ├── graph.py
+│   │   └── stats
+│   │       ├── // contains the hypothesis testing and the statistical analysis of the data and the clustering
+```
 
 Data was taken from:
 1. https://www.kaggle.com/shivamb/netflix-shows/tasks?taskId=123
