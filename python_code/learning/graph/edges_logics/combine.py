@@ -6,7 +6,7 @@ from python_code.learning.graph.edges_logics.IEdgeLogic import IEdgeLogic
 class Combine(IEdgeLogic):
     def __init__(self, iedge_logics):
         """
-        :param iedge_logics: list of IEdgeLogic
+        :type iedge_logics: list of IEdgeLogic
         """
         self.iedge_logics = iedge_logics
 

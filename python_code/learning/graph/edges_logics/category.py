@@ -6,8 +6,8 @@ class Category(IEdgeLogic):
         """
         This class creates edges between movies with common categories.
         The weight is set by the amount of common categories between the movies.
-        :param df: pd.DataFrame
-        :returns pd.DataFrame
+        :type df: pd.DataFrame
+        :rtype pd.DataFrame
         """
         df = df.copy()
         df = df.explode('listed_in')

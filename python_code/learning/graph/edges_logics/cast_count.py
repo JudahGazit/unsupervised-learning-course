@@ -6,8 +6,8 @@ class CastCount(IEdgeLogic):
         """
         this class creates naive edges between movies with common cast.
         the weight of the edge is the number of common cast members between the movies.
-        :param df: pd.DataFrame
-        :returns pd.DataFrame
+        :type df: pd.DataFrame
+        :rtype pd.DataFrame
         """
         df = df.copy()
         df = df.explode('cast')

@@ -5,6 +5,7 @@ class IEdgeLogic(object):
     def create_edges(self, df: pd.DataFrame):
         """
         Returns a dataframe of edges: [src, dst, weight]
-        :param df: pd.DataFrame
+        :type df: pd.DataFrame
+        :rtype: pd.DataFrame
         """
         raise NotImplementedError

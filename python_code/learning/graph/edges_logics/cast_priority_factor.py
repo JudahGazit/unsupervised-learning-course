@@ -14,8 +14,8 @@ class CastPriorityFactor(IEdgeLogic):
         Movie y cast: ['a', 'c', 'd']
         the weight of the edge (x, y) is 1 + 1 + 0.5 + 0.25 = 2.75
 
-        :param df: pd.DataFrame
-        :returns pd.DataFrame
+        :type df: pd.DataFrame
+        :rtype pd.DataFrame
         """
         df = df.copy()
         df = df[df.cast.apply(lambda l: isinstance(l, list))]
