@@ -39,6 +39,20 @@ def summerize(col, df):
 
 
 def test(df, partition, col='averageRating'):
+    """
+    Running Welch's t-test on the groups we created.
+    We try to compare 2 samples from the groups.
+    We summarize the the data, and then run 3 tests:
+    1. levenve test - to see if the variance is equal between the cluster.
+        since the answer in owr case is negative, we pass the param `equal_var=False` to the ttest to initiate Welch's test
+    2. We test if the difference between the groups to be a normal distribution. First we do it visually,
+        and afterward with Shapiro
+    3. We run Welch's t-test after the assumptions have met.
+
+    :param df:
+    :param partition:
+    :param col:
+    """
     stats = community_stats(df, partition)
     stats = add_threshold(stats)
     df = df.merge(partition, on=['title']).merge(stats[['community', 'g']], on=['community'])
