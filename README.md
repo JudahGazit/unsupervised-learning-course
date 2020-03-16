@@ -3,7 +3,7 @@ Unsupervised Learning Course - Final work, Winter 2020, BIU
 
 Project Structure: <br>
 ```
- README.md // YOU ARE HERE
+├── README.md // YOU ARE HERE
 ├── requirements.txt // standard python requirements file
 ├── app.py // the main method for the python code
 ├── unsupervised.pdf // the paper summarizing the work that was done
@@ -13,20 +13,20 @@ Project Structure: <br>
 │       └── // original datasets used for the data processing
 ├── latex
 │   └── // contains all the raw files and images making the pdf file
-├── python_code // all the python code is here
-│   ├── config.py
-│   ├── data_prep
-│   │   ├── // contains the code and the main for the data processing and preparation
-│   ├── learning
-│   │   ├── clustering
-│   │   │   ├── // contains different algorithms used to cluster the data
-│   │   ├── data_loader.py
-│   │   ├── graph
-│   │   │   ├── edges_logics
-│   │   │   │   ├── // contains different logics used to construct the graph's edges from the data
-│   │   │   ├── graph.py
-│   │   └── stats
-│   │       ├── // contains the hypothesis testing and the statistical analysis of the data and the clustering
+└── python_code // all the python code is here
+    ├── config.py
+    ├── data_prep
+    |   └── // contains the code and the main for the data processing and preparation
+    └── learning
+        ├── data_loader.py
+        ├── clustering
+        │   └── // contains different algorithms used to cluster the data
+        ├── graph
+        │   ├── edges_logics
+        │   │   └── // contains different logics used to construct the graph's edges from the data
+        │   ├── graph.py
+        └── stats
+            └── // contains the hypothesis testing and the statistical analysis of the data and the clustering
 ```
 
 Data was taken from:
