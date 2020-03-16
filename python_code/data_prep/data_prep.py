@@ -1,3 +1,5 @@
+import os
+
 import pandas as pd
 
 from python_code.config import PATH
@@ -7,7 +9,7 @@ from python_code.data_prep.utils import lower_columns
 
 
 def load_netflix_data():
-    df = pd.read_csv(PATH + 'netflix_titles.csv')
+    df = pd.read_csv(os.path.join(PATH, 'netflix_titles.csv'), low_memory=False)
     return df
 
 
@@ -39,4 +41,4 @@ def data_prep():
 
 if __name__ == '__main__':
     df = data_prep()
-    df.to_json(PATH + 'stage.json')
+    df.to_json(os.path.join(PATH, 'stage.json'))

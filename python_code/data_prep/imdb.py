@@ -1,3 +1,5 @@
+import os
+
 import pandas as pd
 
 from python_code.config import PATH
@@ -5,8 +7,8 @@ from python_code.data_prep.utils import lower_columns
 
 
 def load_imdb():
-    titles = pd.read_csv(PATH + 'title.basics.tsv', sep='\t')
-    raiting = pd.read_csv(PATH + 'title.ratings.tsv', sep='\t')
+    titles = pd.read_csv(os.path.join(PATH, 'title.basics.tsv'), sep='\t', low_memory=False)
+    raiting = pd.read_csv(os.path.join(PATH, 'title.ratings.tsv'), sep='\t', low_memory=False)
     df = titles.merge(raiting, on=['tconst'])
     return df
 

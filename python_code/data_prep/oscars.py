@@ -1,10 +1,12 @@
+import os
+
 import pandas as pd
 
 from python_code.config import PATH
 
 
 def load_oscars():
-    df = pd.read_csv(PATH + 'oscars.csv')
+    df = pd.read_csv(os.path.join(PATH, 'oscars.csv'), low_memory=False)
     return df
 
 
