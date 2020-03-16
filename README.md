@@ -34,7 +34,7 @@ Data was taken from:
 3. https://www.kaggle.com/unanimad/the-oscar-award
 
 The IMDB dataset couldn't be uploaded to this repository due to it's size,
-so in order to rerun the entire data preparation process it is must be downloaded manually
-and placed in the `data/netflix/` folder
+so in order to rerun the entire data preparation process you need to download it manually
+and place it in the `data/netflix/` folder
 
 The results of the data preparation process are saved in `stage.json` so rerunning the entire workflow is unnecessary.
