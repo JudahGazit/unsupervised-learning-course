@@ -8,8 +8,8 @@ Project Structure: <br>
 ├── unsupervised.pdf // the paper summarizing the work that was done <br>
 ├── data <br>
 │   └── netflix <br>
-│       └── stage.json // the result of the data processing <br>
-│       └── // original datasets used for the data processing <br>
+│   <tab>    └── stage.json // the result of the data processing <br>
+│   <tab>   └── // original datasets used for the data processing <br>
 ├── latex <br>
 │   └── // contains all the raw files and images making the pdf file <br>
 ├── python_code // all the python code is here <br>
