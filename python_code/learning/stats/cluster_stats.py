@@ -23,8 +23,14 @@ def community_stats(df, communities):
     return df
 
 
-def stats_threshold(stats, threshold=7.9):
+def add_threshold(stats, threshold=7.9):
+    stats = stats.copy()
     stats['g'] = stats.max_raiting.apply(lambda v: 1 if v >= threshold else 0)
+    return stats
+
+
+def stats_threshold(stats, threshold=7.9):
+    stats = add_threshold(stats, threshold)
     stats_g = stats.groupby(['g']).agg({'title': 'sum', 'win_movies': 'sum', 'win_and_nominated_movies': 'sum',
                                         'max_raiting': 'max', 'min_raiting': 'min', 'averageRating': 'mean'})
     return stats_g

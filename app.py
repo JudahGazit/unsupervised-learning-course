@@ -7,6 +7,7 @@ from python_code.learning.graph.edges_logics.combine import Combine
 from python_code.learning.graph.graph import create_graph
 from python_code.learning.louvain import Louvain
 from python_code.learning.stats.cluster_stats import *
+from python_code.learning.stats.hypothesis_test import test
 
 
 def get_graph(df):
@@ -34,6 +35,7 @@ def main():
     graph = get_graph(df)
     partition = cluster(graph)
     display(stats(df, partition))
+    test(df, partition)
 
 
 if __name__ == "__main__":
