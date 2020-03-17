@@ -1,4 +1,9 @@
 # requirements.txt
+numpy
+seaborn
+researchpy
+IPython
+matplotlib
 pandas
 scipy
 sklearn
