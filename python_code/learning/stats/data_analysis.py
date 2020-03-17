@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import networkx as nx
 import pandas as pd
+from IPython.core.display import display
 
 
 def graph_out_degree_histogram(graph: nx.Graph):
@@ -27,11 +28,39 @@ def graph_weights_histogram(graph: nx.Graph):
 
 def corrolation_between_raiting_and_oscars(df):
     df = df[['averageRating', 'win']]
-    df.corr()
-    display(df)
+    display(df.corr())
+
+
+def cast_stats(df: pd.DataFrame):
+    ax = plt.subplot()
+    df = df.explode('cast')
+    df = df.groupby(['cast'], as_index=False).agg({'title': 'count'})
+    df['title'].hist(bins=50)
+    ax.set_title('cast members histogram')
+    ax.set_xlabel('movies per cast member')
+    plt.show()
+
+
+def rating_histogram(df: pd.DataFrame):
+    ax = plt.subplot()
+    df['averageRating'].hist(bins=50)
+    ax.set_title('Rating Histogram')
+    ax.set_xlabel('Rating')
+    plt.show()
+
+
+def rating_histogram_oscar_winners(df: pd.DataFrame):
+    ax = plt.subplot()
+    df[df.win > 0]['averageRating'].hist(bins=50)
+    ax.set_title('Rating Histogram - oscar winners only')
+    ax.set_xlabel('Rating')
+    plt.show()
 
 
 def analyze(df, graph):
     graph_out_degree_histogram(graph)
     graph_weights_histogram(graph)
     corrolation_between_raiting_and_oscars(df)
+    cast_stats(df)
+    rating_histogram(df)
+    rating_histogram_oscar_winners(df)
