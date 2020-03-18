@@ -1608,6 +1608,480 @@ literal "false"
 קליסטור המידע
 \end_layout
 
+\begin_layout Subsection
+בניית גרף
+\end_layout
+
+\begin_layout Subsubsection
+יצירת הקשתות
+\end_layout
+
+\begin_layout Standard
+המטרה שלנו אם כן היא לבנות תחילה את גרף הקשרים בין הסרטים, או במילים אחרות
+ - להחליט מה הן הקשתות המחברות סרטים.
+ לצורך כך נבדקו מספר גישות.
+\end_layout
+
+\begin_layout Standard
+תהי 
+\begin_inset Formula $\{M_{i}\}_{i=1}^{N}$
+\end_inset
+
+ קבוצת הסרטים השונים, ויהי 
+\begin_inset Formula $C_{i}=\{c_{i}^{1},...,c_{i}^{k}\}$
+\end_inset
+
+ קבוצת השחקנים המשחקים בסרט 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+הגישה הנאיבית
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+name "cast_count.py"
+target "https://github.com/JudahGazit/unsupervised-learning-course/blob/master/python_code/learning/graph/edges_logics/cast_count.py"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ מגדירה את הציון בין הסרט 
+\begin_inset Formula $M_{i}$
+\end_inset
+
+ לסרט 
+\begin_inset Formula $M_{j}$
+\end_inset
+
+ ע
+\begin_inset Quotes erd
+\end_inset
+
+י:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+w_{i,j}=|C_{i}\cap C_{j}|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+הגישה הזו נתנה תוצאות טובות, אבל גישה בריאה יותר היא לתת ציון שונה לכל אחד
+ מהשחקנים בסרט.
+ הסיבה היא שמניתוח ה
+\lang english
+dataset
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+עולה באופן מאוד ברור שרשימת השחקנים בסרט ממויינת, כלומר ככל שהשחקן מופיע
+ מוקדם יותר ברשימה - כך חשיבותו בסרט עולה.
+\begin_inset Newline newline
+\end_inset
+
+בנוסף, צריך להוסיף את במאי הסרט לרשימה )היות והוא לא חלק מצוות השחקנים(.
+ התוספת הזו מתבצעת ב 
+\begin_inset CommandInset href
+LatexCommand href
+name "python_code/learning/data_loader.py"
+target "https://github.com/JudahGazit/unsupervised-learning-course/blob/master/python_code/learning/data_loader.py"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+לכן, הגרסה המתקדמת יותר
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+name "python_code/learning/graph/edges_logics/cast_priority_factor.py"
+target "https://github.com/JudahGazit/unsupervised-learning-course/blob/master/python_code/learning/graph/edges_logics/cast_priority_factor.py"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ של המשקל הזה תהיה זו: כעת נניח שיש חשיבות לסדר בקבוצה 
+\begin_inset Formula $C_{i}$
+\end_inset
+
+.
+ נגדיר את המשקל החדש כך: תהי הפונקציה 
+\begin_inset Formula 
+\[
+C(i,c)=\begin{cases}
+j & \exists j:c_{i}^{j}=c\\
+0 & \text{otherwise}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+כלומר 
+\begin_inset Formula $C(i,c)$
+\end_inset
+
+ מחזירה את האינדקס של השחקן 
+\begin_inset Formula $c$
+\end_inset
+
+ בקבוצה 
+\begin_inset Formula $C_{i}$
+\end_inset
+
+.
+ אזי המשקל החדש יהיה 
+\begin_inset Formula 
+\[
+w_{i,j}=\sum_{c\in C_{i}\cap C_{j}}2^{-C(i,c)}+2^{-C(j,c)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+כלומר בעבור שני סרטים 
+\begin_inset Formula $C_{1}=\{a,b,c\}\ \ C_{2}=\{a,c\}$
+\end_inset
+
+ אזי 
+\begin_inset Formula $w_{1,2}=\underset{a}{\underbrace{1+1}}+\underset{c}{\underbrace{\frac{1}{4}+\frac{1}{2}}=2.75}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+היוריסטיקה נוספת שנרצה להוסיף היא התייחסות לסוג הסרט
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+name "python_code/learning/graph/edges_logics/category.py"
+target "https://github.com/JudahGazit/unsupervised-learning-course/blob/master/python_code/learning/graph/edges_logics/category.py"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ סביר להניח שזה ששחקן 
+\begin_inset Formula $x$
+\end_inset
+
+ שיחק בשתי קומדיות יצביע על קשר גבוה יותר בין טיב הסרטים לעומת קומדיה מול
+ דרמה.
+ על כן אם 
+\begin_inset Formula $G_{i}=\{g_{1},...,g_{t}\}$
+\end_inset
+
+ קבוצת הז'אנרים של הסרט 
+\begin_inset Formula $i$
+\end_inset
+
+, נגדיר את המשקל החדש כך:
+\begin_inset Formula 
+\[
+w'_{i,j}=w_{i,j}+|G_{i}\cap G_{j}|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+מדידת איכות המשקלים
+\end_layout
+
+\begin_layout Standard
+הדרך הטובה ביותר שיש לי כרגע כדי למדוד את איכות המשקלים של הקשתות ביחס לבעיה
+ אותה אני מנסה לפתור, היא לחשב בעבור כל לוגיקה את מקדם המתאם של פירסון ביחס
+ לההפרש בין הציונים של הסרטים.
+ כלומר, יהיו סרטים 
+\begin_inset Formula $M_{i},M_{j}$
+\end_inset
+
+, ויהיו דירוגיהם 
+\begin_inset Formula $S_{i},S_{j}$
+\end_inset
+
+.
+ היינו רוצים לראות ש 
+\begin_inset Formula $R(|S_{i}-S_{j}|,w_{i,j})<0$
+\end_inset
+
+, כלומר
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+קיים יחס ליניארי שלילי בניהם )ככל שהציון גבוה יותר - כך ההפרש בין הציונים
+ קטן יותר(.
+\begin_inset Newline newline
+\end_inset
+
+נאמר ששיטה אחת טובה יותר מהשנייה אם מקדם המתאם של הראשונה גדול בערכו המוחלט
+ מזו של השנייה )קשר מובהק יותר(.
+ צריך לזכור שזו היוריסטיקה בלבד )אם זה היה המדד הטוב ביותר הייתי פשוט לוקח
+ את ההפרש בתור הציון לקשת(
+\begin_inset Newline newline
+\end_inset
+
+הטבלה המצורפת מציגה את תוצאות הניסוי, הקוד שיוצר אותה נמצא ב
+\begin_inset CommandInset href
+LatexCommand href
+name "python_code/learning/stats/edge_logic_test.py"
+target "https://github.com/JudahGazit/unsupervised-learning-course/blob/master/python_code/learning/stats/edge_logic_test.py"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="7">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+לוגיקה
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+חלוקת הגרף לאשכולות
+\end_layout
+
+\begin_layout Subsection
+מדידת איכות התוצר
+\end_layout
+
 \begin_layout Section
 סיכום
 \end_layout

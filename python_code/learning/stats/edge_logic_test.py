@@ -26,7 +26,7 @@ if __name__ == '__main__':
         CastCount(),
         CastPriorityFactor(),
         Category(),
-        Combine([CastPriorityFactor(), Category()]),
         Combine([CastCount(), Category()]),
+        Combine([CastPriorityFactor(), Category()]),
     ]
     test_edge_logic(df, edges_logics)
