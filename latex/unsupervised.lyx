@@ -1292,8 +1292,8 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset href
 LatexCommand href
-name "הפונקציה corrolation_between_raiting_and_oscars"
-target "https://github.com/JudahGazit/unsupervised-learning-course/blob/550378e13c4ff1dcee4e904d7888b994ed97f546/python_code/learning/stats/data_analysis.py#L29"
+name "corrolation_between_raiting_and_oscars"
+target "https://github.com/JudahGazit/unsupervised-learning-course/blob/master/python_code/learning/stats/data_analysis.py#L29"
 literal "false"
 
 \end_inset
@@ -1342,8 +1342,10 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
+\align center
 \begin_inset Graphics
 	filename graph-cast-movies.png
+	width 30page%
 
 \end_inset
 
@@ -1361,8 +1363,26 @@ literal "false"
 \end_inset
 
 .
- התרשים הבא הוא היסטוגרמה של הפרשי הציונים בין הסרט הטוב ביותר לגרוע ביותר
- של כל שחקן )בעבור אלו עם יותר מסרט אחד(.
+ התרשים הבא הוא היסטוגרמה
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+name "cast_member_rating_variance"
+target "https://github.com/JudahGazit/unsupervised-learning-course/blob/master/python_code/learning/stats/data_analysis.py#L60"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ של הפרשי הציונים בין הסרט הטוב ביותר לגרוע ביותר של כל שחקן )בעבור אלו
+ עם יותר מסרט אחד(.
  כלומר - הפרש
 \family roman
 \series medium

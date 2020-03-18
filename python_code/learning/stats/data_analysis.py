@@ -51,7 +51,7 @@ def rating_histogram(df: pd.DataFrame):
 
 def rating_histogram_oscar_winners(df: pd.DataFrame):
     ax = plt.subplot()
-    df[df.win > 0]['averageRating'].hist(bins=50)
+    df[df.win > 0]['averageRating'].hist(bins=20)
     ax.set_title('Rating Histogram - oscar winners only')
     ax.set_xlabel('Rating')
     plt.show()
