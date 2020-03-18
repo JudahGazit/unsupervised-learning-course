@@ -78,7 +78,6 @@ def graph_connected_components(graph: nx.Graph):
     plt.xlabel('component index')
     plt.ylabel('number of nodes')
     plt.show()
-    a = 6
 
 
 def analyze(df, graph):
