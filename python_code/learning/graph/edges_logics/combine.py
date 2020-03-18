@@ -15,6 +15,6 @@ class Combine(IEdgeLogic):
         for edge_logic in self.iedge_logics[1:]:
             edges = edges.merge(edge_logic.create_edges(df), on=['src', 'dst'], how='left')
             edges.weight_y = edges.weight_y.apply(lambda x: x + 1 if x > 0 else 1)
-            edges['weight'] = edges.weight_x * edges.weight_y
+            edges['weight'] = edges.weight_x + edges.weight_y
             edges = edges[['src', 'dst', 'weight']]
         return edges
