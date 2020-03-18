@@ -67,6 +67,20 @@ def cast_member_rating_variance(df):
     plt.show()
 
 
+def graph_connected_components(graph: nx.Graph):
+    components = nx.connected_components(graph)
+    comp = []
+    for i, c in enumerate(components):
+        comp.append([i, len(c)])
+    df = pd.DataFrame(comp, columns=['component', 'count'])
+    plt.bar(df['component'], df['count'])
+    plt.title('Number of node in each connected component component')
+    plt.xlabel('component index')
+    plt.ylabel('number of nodes')
+    plt.show()
+    a = 6
+
+
 def analyze(df, graph):
     graph_out_degree_histogram(graph)
     graph_weights_histogram(graph)
@@ -75,3 +89,4 @@ def analyze(df, graph):
     rating_histogram(df)
     rating_histogram_oscar_winners(df)
     cast_member_rating_variance(df)
+    graph_connected_components(graph)
