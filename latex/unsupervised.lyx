@@ -4,23 +4,58 @@
 \begin_header
 \save_transient_properties true
 \origin unavailable
-\textclass heb-article
+\textclass article
 \begin_preamble
-\def\HeblatexEncoding{HE8}
-\def\HeblatexEncodingFile{he8enc}
+%%% Set Hebrew and English fonts
+\setmonofont[Script=Hebrew]{Miriam Mono CLM}
+\newfontfamily{\englishfont}[Ligatures=TeX]{TeX Gyre Pagella}
+%\newfontfamily{\englishfont}[Ligatures=TeX]{Latin Modern Roman}
+% Proper font size in math mode.
+\setmathrm[Ligatures=TeX]{Latin Modern Math}
+
+%%% Another way is to set just the Hebrew fonts:
+%\newfontfamily\hebrewfont[Script=Hebrew]{David CLM}
+%\newfontfamily\hebrewfonttt[Script=Hebrew]{Miriam Mono CLM}
+%\newfontfamily\hebrewfontsf[Script=Hebrew]{Simple CLM}
+% consider using \usepackage{iffont}
+
+%%% Sets both header and footer
+\fancyhf{} % sets to nothing
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\textup{\thepage}}
+
+\renewcommand*{\refname}{Bibliography}
+
+%%% Some alternative styles
+\ifcsname question\endcsname
+  \theoremstyle{definition}
+  \newtheorem{quesh}[thm]{שאלה}
+  \renewenvironment{question}{\begin{quesh}}{\end{quesh}}
+\else
+\fi
+\ifcsname sol*\endcsname
+  \theoremstyle{remark}
+  \newtheorem*{emphsol*}{פתרון}
+  \renewenvironment{sol*}{\begin{emphsol*}}{\end{emphsol*}}
+\else
+\fi
 \end_preamble
 \use_default_options true
+\begin_modules
+theorems-ams
+theorems-ams-extended
+\end_modules
 \maintain_unincluded_children false
 \language hebrew
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman "default" "default"
-\font_sans "default" "default"
+\font_roman "default" "David CLM"
+\font_sans "default" "Hadasim CLM"
 \font_typewriter "default" "default"
 \font_math "auto" "auto"
 \font_default_family default
-\use_non_tex_fonts false
+\use_non_tex_fonts true
 \font_sc false
 \font_osf false
 \font_sf_scale 100 100
@@ -28,13 +63,23 @@
 \use_microtype false
 \use_dash_ligatures true
 \graphics default
-\default_output_format default
-\output_sync 0
+\default_output_format pdf4
+\output_sync 1
+\output_sync_macro "\synctex=1"
 \bibtex_command default
 \index_command default
 \paperfontsize default
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
 \papersize default
 \use_geometry true
 \use_package amsmath 1
@@ -53,7 +98,7 @@
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
-\suppress_date false
+\suppress_date true
 \justification true
 \use_refstyle 1
 \use_minted 0
@@ -75,7 +120,8 @@
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
-\paperpagestyle default
+\paperpagestyle fancy
+\bullet 0 2 5 -1
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -183,8 +229,24 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Standard
-המידע אותו אני מנסה לנתח כאן הוא ניתוח הסרטים המופיעים בנטפליקס, כשהמטרה
- הכללית היא לחלק אותם בסופו של דבר לקבוצת סרטים ש
+המידע אותו אני מנסה לנתח כאן הוא ניתוח הסרטים המופיעים בנטפליקס
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+target "https://www.kaggle.com/shivamb/netflix-shows/tasks?taskId=123"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+, כשהמטרה הכללית היא לחלק אותם בסופו של דבר לקבוצת סרטים ש
 \begin_inset Quotes erd
 \end_inset
 
@@ -212,7 +274,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename netflix-data-demo.png
+	filename /home/rotem/Documents/code/unsupervised-learning/latex/netflix-data-demo.png
 	width 80page%
 
 \end_inset
@@ -308,7 +370,41 @@ LatexCommand tableofcontents
 \lang english
 IMDB
 \lang hebrew
-, ובכמה פרסי אוסקר זכה הסרט.
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+target "https://www.kaggle.com/ashirwadsangwan/imdb-dataset"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+, ובכמה פרסי אוסקר זכה הסרט
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+target "https://www.kaggle.com/unanimad/the-oscar-award"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
  הקוד לתהליך ההצמדה נמצא בנתיב
 \family roman
 \series medium
@@ -336,7 +432,16 @@ IMDB
 \noun default
 \color inherit
 \lang english
-python_code/data_prep
+
+\begin_inset CommandInset href
+LatexCommand href
+name "python_code/data_prep"
+target "https://github.com/JudahGazit/unsupervised-learning-course/tree/master/python_code/data_prep"
+literal "false"
+
+\end_inset
+
+
 \family roman
 \series medium
 \shape up
@@ -445,7 +550,16 @@ and
 \noun default
 \color inherit
 \lang english
-data/netflix/stage.json
+
+\begin_inset CommandInset href
+LatexCommand href
+name "data/netflix/stage.json"
+target "https://github.com/JudahGazit/unsupervised-learning-course/blob/master/data/netflix/stage.json"
+literal "false"
+
+\end_inset
+
+
 \lang hebrew
 .
  
@@ -1043,6 +1157,431 @@ docstring
 
 \begin_layout Section
 ניתוח המידע
+\end_layout
+
+\begin_layout Standard
+כלל התרשימים המוצגים נוצרים בקובץ
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+
+\begin_inset CommandInset href
+LatexCommand href
+name "python_code/learning/stats/data_analysis.py"
+target "https://github.com/JudahGazit/unsupervised-learning-course/blob/master/python_code/learning/stats/data_analysis.py"
+literal "false"
+
+\end_inset
+
+
+\lang hebrew
+.
+\end_layout
+
+\begin_layout Standard
+התרשים הבא מציג את הפילוח של הסרטים לפי מדינת המקור שלהן:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename graph-country.png
+	width 30page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+אני מסנן רק על סרטים אמריקאים ובריטים כי זו קבוצת העניין שלי.
+ הסינון מתבצע ב 
+\begin_inset CommandInset href
+LatexCommand href
+name "python_code/learning/data_loader.py"
+target "https://github.com/JudahGazit/unsupervised-learning-course/blob/master/python_code/learning/data_loader.py"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+שני התרשימים הבאים מציגים את היסטוגרמת הדירוגים שניתנו לסרטים הללו בנטלפיקס,
+ ואת היסטוגרמת הציונים של סרטים זוכי אוסקר.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename graph-rating-hist.png
+	width 30page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename graph-rating-oscar-hist.png
+	width 30page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+אפשר לראות מכך שני דברים מעניינים: דבר ראשון - סרט זוכה אוסקר מקבל תמיד
+ ציון של מעל
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+5
+\numeric off
+, אך אולי בניגוד למצופה - אין מתאם חד משמעי בין הציון לזכייה.
+ כשמחשבים את מקדם מתאם פירסון בין שני הנתונים
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+name "הפונקציה corrolation_between_raiting_and_oscars"
+target "https://github.com/JudahGazit/unsupervised-learning-course/blob/550378e13c4ff1dcee4e904d7888b994ed97f546/python_code/learning/stats/data_analysis.py#L29"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ מקבלים 
+\begin_inset Formula $R=0.391695$
+\end_inset
+
+ ,
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+כלומר קשר ליניארי חיובי אך לא משמעותי מאוד.
+\end_layout
+
+\begin_layout Standard
+התרשים הבא הוא היסטוגרמה של כמות הסרטים שכל שחקן שיחק בהם.
+ ניתן לראות שבאופן מובהק רוב השחקנים )במידע שלנו( הופיעו בסרט יחיד.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename graph-cast-movies.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+נבדוק את הנחת העבודה שלנו - 
+\begin_inset Quotes eld
+\end_inset
+
+סביר להניח שישנם שחקנים טובים ושחקנים גרועים, וששחקן טוב ישחק בעיקר בסרטים
+ טובים
+\begin_inset Quotes erd
+\end_inset
+
+.
+ התרשים הבא הוא היסטוגרמה של הפרשי הציונים בין הסרט הטוב ביותר לגרוע ביותר
+ של כל שחקן )בעבור אלו עם יותר מסרט אחד(.
+ כלומר - הפרש
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+0
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+אומר שכל הסרטים שלו קיבלו את אותו הציון, והפרש
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+10
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+אומר שהיה לו סרט מושלם וסרט נורא ואיום.
+ הממוצע הוא 
+\begin_inset Formula $1.111$
+\end_inset
+
+, סטיית התקן היא 
+\begin_inset Formula $0.78$
+\end_inset
+
+, ואחוזון
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+95
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+עומד על 
+\begin_inset Formula $2.597$
+\end_inset
+
+.
+ כלומר, המידע אכן מקיים במידת מה את ההנחה שלנו - ההפרשים בין הסרטים של שחקן
+ מסוים אינם עולים על
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula $30\%$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename graph-cast-rating-hist.png
+	width 30page%
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section

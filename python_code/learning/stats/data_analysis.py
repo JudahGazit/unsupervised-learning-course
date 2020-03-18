@@ -57,6 +57,16 @@ def rating_histogram_oscar_winners(df: pd.DataFrame):
     plt.show()
 
 
+def cast_member_rating_variance(df):
+    df = df.explode('cast')
+    d = df.groupby(['cast'], as_index=False)[['cast', 'averageRating']].agg(['min', 'max', 'mean', 'std', 'count'])
+    d['diff'] = d['averageRating']['max'] - d['averageRating']['min']
+    d[d['averageRating']['count'] > 1]['diff'].hist()
+    plt.title('maximal diff between cast member\'s movies histogram')
+    plt.xlabel('maximal diff between movie rating')
+    plt.show()
+
+
 def analyze(df, graph):
     graph_out_degree_histogram(graph)
     graph_weights_histogram(graph)
@@ -64,3 +74,4 @@ def analyze(df, graph):
     cast_stats(df)
     rating_histogram(df)
     rating_histogram_oscar_winners(df)
+    cast_member_rating_variance(df)
