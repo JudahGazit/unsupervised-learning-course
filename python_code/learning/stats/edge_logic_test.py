@@ -12,6 +12,7 @@ from python_code.learning.graph.edges_logics.rating_diff import RatingDiff
 
 def test_edge_logic(df: pd.DataFrame, edges_logics: [IEdgeLogic]):
     edge_by_rating_diff = RatingDiff().create_edges(df)
+    edge_by_rating_diff.weight = 10 - edge_by_rating_diff.weight
     for edges_logic in edges_logics:
         display(edges_logic.__class__.__name__)
         edges = edges_logic.create_edges(df)
@@ -23,6 +24,7 @@ def test_edge_logic(df: pd.DataFrame, edges_logics: [IEdgeLogic]):
 if __name__ == '__main__':
     df = load_data()
     edges_logics = [
+        RatingDiff(),
         CastCount(),
         CastPriorityFactor(),
         Category(),
