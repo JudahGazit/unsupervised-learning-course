@@ -1,0 +1,1097 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+%%% Set Hebrew and English fonts
+\setmonofont[Script=Hebrew]{Miriam Mono CLM}
+\newfontfamily{\englishfont}[Ligatures=TeX]{TeX Gyre Pagella}
+%\newfontfamily{\englishfont}[Ligatures=TeX]{Latin Modern Roman}
+% Proper font size in math mode.
+\setmathrm[Ligatures=TeX]{Latin Modern Math}
+
+%%% Another way is to set just the Hebrew fonts:
+%\newfontfamily\hebrewfont[Script=Hebrew]{David CLM}
+%\newfontfamily\hebrewfonttt[Script=Hebrew]{Miriam Mono CLM}
+%\newfontfamily\hebrewfontsf[Script=Hebrew]{Simple CLM}
+% consider using \usepackage{iffont}
+
+%%% Sets both header and footer
+\fancyhf{} % sets to nothing
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\textup{\thepage}}
+
+\renewcommand*{\refname}{Bibliography}
+
+%%% Some alternative styles
+\ifcsname question\endcsname
+  \theoremstyle{definition}
+  \newtheorem{quesh}[thm]{שאלה}
+  \renewenvironment{question}{\begin{quesh}}{\end{quesh}}
+\else
+\fi
+\ifcsname sol*\endcsname
+  \theoremstyle{remark}
+  \newtheorem*{emphsol*}{פתרון}
+  \renewenvironment{sol*}{\begin{emphsol*}}{\end{emphsol*}}
+\else
+\fi
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+theorems-ams-extended
+\end_modules
+\maintain_unincluded_children false
+\language hebrew
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "David CLM"
+\font_sans "default" "Hadasim CLM"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format pdf4
+\output_sync 1
+\output_sync_macro "\synctex=1"
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 0.79in
+\topmargin 0.79in
+\rightmargin 0.79in
+\bottommargin 0.79in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+למידה לא מפוקחת - עבודת סיום
+\end_layout
+
+\begin_layout Author
+מגיש: רותם גזית, ת
+\begin_inset Quotes erd
+\end_inset
+
+ז
+\family roman
+\series medium
+\shape up
+\size large
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+318446697
+\end_layout
+
+\begin_layout Date
+סמסטר חורף
+\family roman
+\series medium
+\shape up
+\size large
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2020
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+הקדמה
+\end_layout
+
+\begin_layout Standard
+המידע אותו אני מנסה לנתח כאן הוא ניתוח הסרטים המופיעים בנטפליקס, כשהמטרה
+ הכללית היא לחלק אותם בסופו של דבר לקבוצת סרטים ש
+\begin_inset Quotes erd
+\end_inset
+
+שווה לצפות בהם
+\begin_inset Quotes erd
+\end_inset
+
+ וקבוצת סרטים ש
+\begin_inset Quotes erd
+\end_inset
+
+לא שווה לצפות בהם
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+המידע מכיל בעבור כל סרט את שמו, שנת הפצתו, אורכו, הבמאים והשחקנים שלו, דירוג
+ קבוצת הגיל המומלצת לצפייה, הקטגוריות אליו שויך הסרט בנטפליקס, המדינות בהן
+ הופק וצולם, ותיאור הסרט במילים.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename netflix-data-demo.png
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+את המידע הצמדתי לשני נתונים נוספים: מה הדירוג הממוצע )
+\numeric on
+1
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+עד
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+10
+\numeric off
+( שנתנו לו צופים באתר
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+IMDB
+\lang hebrew
+, ובכמה פרסי אוסקר זכה הסרט.
+ הקוד לתהליך ההצמדה נמצא בנתיב
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+python_code/data_prep
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+והוא מכיל מספר ניואנסים קטנים )למשל חלק מהמקומות השתמשו ב & במקום במילה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+and
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+בשמות חלק מהסרטים(.
+ לאחר תהליך העיבוד הראשוני המידע נשמר בקובץ
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+data/netflix/stage.json
+\lang hebrew
+.
+ 
+\end_layout
+
+\begin_layout Standard
+ביציאה לדרך אני מניח מספר הנחות עבודה על עולם הבעיה:
+\end_layout
+
+\begin_layout Enumerate
+סביר להניח שישנם שחקנים טובים ושחקנים גרועים, וששחקן טוב ישחק בעיקר בסרטים
+ טובים )וסרט טוב בעיקר יכיל שחקנים טובים(.
+\begin_inset Newline newline
+\end_inset
+
+כלומר, טיב הסרט יכול להיות קשור לסרט אחר לפי השחקנים שבו.
+\end_layout
+
+\begin_layout Enumerate
+פרס אוסקר הוא מדד אבסלוטי לאיכות הסרט.
+ הייתי רוצה למצוא קורולציה בין 
+\begin_inset Quotes eld
+\end_inset
+
+קבוצת הסרטים ששווה לצפות בהם
+\begin_inset Quotes erd
+\end_inset
+
+ והזכיות שלהם בפרסי אוסקר.
+\end_layout
+
+\begin_layout Enumerate
+ישנם סינונים בסיסיים שאני יכול לעשות שימקדו אותי במציאת 
+\begin_inset Quotes eld
+\end_inset
+
+קבוצת הסרטים ששווה לצפות בהם
+\begin_inset Quotes erd
+\end_inset
+
+, למשל:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+ככל הנראה שלא אכליל סרטים הודים בתוך הקבוצה הזו, היות וזה לא הטעם שאני מחפש
+ בסרט טוב.
+\end_layout
+
+\begin_layout Enumerate
+דירוג נמוך מאוד לסרט ב
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+IMDB
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+הוא חיתוך פשוט שאפשר לעשות.
+ למשל כל סרט שקיבל דירוג פחות מ
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+5
+\numeric off
+, ישירות יעבור ל
+\begin_inset Quotes erd
+\end_inset
+
+קבוצת הסרטים שלא שווה לצפות בהם
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+תכנית העבודה היא כזו:
+\end_layout
+
+\begin_layout Enumerate
+לבצע סינונים נאיביים לפי הנחות העבודה שלי על המידע
+\end_layout
+
+\begin_layout Enumerate
+ליצור גרף קשרים בין הסרטים, בהתבסס בעיקר על השחקנים המשותפים בניהם
+\end_layout
+
+\begin_layout Enumerate
+למצוא קהילות בגרף במגוון שיטות: אלגוריתם
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+Louvain
+\lang hebrew
+, או לחילופין ביצוע
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+MDS
+\lang hebrew
+ ולאחריו אלגוריתמים לזיהוי קהילות במרחב
+\end_layout
+
+\begin_layout Enumerate
+לאחד את הקהילות שנמצא לשתי קבוצות - קבוצת 
+\begin_inset Quotes eld
+\end_inset
+
+הסרטים הטובים
+\begin_inset Quotes erd
+\end_inset
+
+ וקבוצת 
+\begin_inset Quotes eld
+\end_inset
+
+הסרטים הלא טובים
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+לבצע מבחנים לאיכות הקהילות שמצאנו - מבחנים סטטיסטיים למובהקות ההפרדה שיצרנו,
+ ואל מול ה
+\lang english
+
+\begin_inset Quotes erd
+\end_inset
+
+Groudtruth
+\begin_inset Quotes erd
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+של סרטים טובים - שהוא מבחינתי זכייה בפרסי אוסקר.
+\end_layout
+
+\begin_layout Subsection*
+הנדסת תכנה
+\end_layout
+
+\begin_layout Standard
+הפרויקט נבנה כך שיהיה ניתן בקלות מאוד להחליף את שיטת הקליסטור או את שיטת
+ בניית הגרף.
+ לצורך כך קיימים שני
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+Interfaces
+\lang hebrew
+:
+\end_layout
+
+\begin_layout Enumerate
+עבור יצירת הקשתות לגרף -
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+IEdgeLogic
+\lang hebrew
+
+\begin_inset Newline newline
+\end_inset
+
+מקבל את ה
+\lang english
+dataframe
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ומחזיר קשתות ממושקלות
+\end_layout
+
+\begin_layout Enumerate
+עבור חלוקה לקהילות
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+-
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+ICluster
+\lang hebrew
+
+\begin_inset Newline newline
+\end_inset
+
+מקבל את הגרף ומחזיר שיוך של כל
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+node
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+לקהילה
+\end_layout
+
+\begin_layout Standard
+השיטה הזו מאפשרת לנו להחליף בסה
+\begin_inset Quotes erd
+\end_inset
+
+כ את המימוש הנבחר לאותו ממשק ב
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+app.py
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ כדי להחליף שיטת עבודה ולבדוק מיד את התוצאות.
+ כל אחד מהמימושים יוסבר כאן ובנוסף מתועד כ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+docstring
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+בקוד עצמו.
+\end_layout
+
+\begin_layout Section
+ניתוח המידע
+\end_layout
+
+\begin_layout Standard
+כלל התרשימים המוצגים נוצרים בקובץ 
+\end_layout
+
+\begin_layout Section
+קליסטור המידע
+\end_layout
+
+\begin_layout Section
+סיכום
+\end_layout
+
+\end_body
+\end_document
