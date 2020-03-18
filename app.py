@@ -3,9 +3,7 @@ from IPython.core.display import display
 
 from python_code.learning.clustering.louvain import Louvain
 from python_code.learning.data_loader import load_data
-from python_code.learning.graph.edges_logics.cast_priority_factor import CastPriorityFactor
-from python_code.learning.graph.edges_logics.category import Category
-from python_code.learning.graph.edges_logics.combine import Combine
+from python_code.learning.graph.edges_logics.rating_diff import RatingDiff
 from python_code.learning.graph.graph import create_graph
 from python_code.learning.stats.cluster_stats import *
 from python_code.learning.stats.data_analysis import analyze
@@ -13,7 +11,8 @@ from python_code.learning.stats.hypothesis_test import test
 
 
 def get_graph(df):
-    edges_logic = Combine([CastPriorityFactor(), Category()])
+    edges_logic = RatingDiff()
+    # edges_logic = Combine([CastPriorityFactor(), Category()])  # Uncomment this line to activate the alternative method
     edges = edges_logic.create_edges(df)
     graph = create_graph(edges)
     return graph
@@ -32,7 +31,7 @@ def main():
     analyze(df, graph)
     cluster_engine = Louvain()
     partition = cluster_engine.cluster(graph)
-    display(stats(df, partition), )
+    display(stats(df, partition))
     test(df, partition)
 
 

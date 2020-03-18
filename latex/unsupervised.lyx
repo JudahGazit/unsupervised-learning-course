@@ -99,7 +99,7 @@ theorems-ams-extended
 \use_indices false
 \paperorientation portrait
 \suppress_date true
-\justification true
+\justification false
 \use_refstyle 1
 \use_minted 0
 \index Index
@@ -1636,18 +1636,98 @@ literal "false"
 \end_inset
 
 .
- 
+ יהי 
+\begin_inset Formula $S_{i}$
+\end_inset
+
+ הדירוג של הסרט 
+\begin_inset Formula $i$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-הגישה הנאיבית
+הגישה הפשוטה ביותר
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
 \begin_inset CommandInset href
 LatexCommand href
-name "cast_count.py"
+name "python_code/learning/graph/edges_logics/rating_diff.py"
+target "https://github.com/JudahGazit/unsupervised-learning-course/blob/master/python_code/learning/graph/edges_logics/rating_diff.py"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ אומרת את הדבר הבא: הציון לקשת בין הסרט 
+\begin_inset Formula $M_{i}$
+\end_inset
+
+ לסרט 
+\begin_inset Formula $M_{j}$
+\end_inset
+
+ יהיה ההפרש בין הדירוגים של הסרטים )במידה ויש להם שחקנים משותפים(.
+ כיוון שאנחנו רוצים שציון גדול יותר יעיד על קשר חזק יותר, וההפרש בין הציונים
+ חסום )
+\numeric on
+10
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+הוא הציון המקסימלי(, נכתוב כך:
+\begin_inset Formula 
+\[
+w_{i,j}=\begin{cases}
+10-|S_{i}-S_{j}| & C_{i}\cap C_{j}\neq\phi\\
+0 & \text{otherwise}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+גישה נוספת 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+name "python_code/learning/graph/edges_logics/cast_count.py"
 target "https://github.com/JudahGazit/unsupervised-learning-course/blob/master/python_code/learning/graph/edges_logics/cast_count.py"
 literal "false"
 
@@ -1718,10 +1798,13 @@ dataset
 \color inherit
 עולה באופן מאוד ברור שרשימת השחקנים בסרט ממויינת, כלומר ככל שהשחקן מופיע
  מוקדם יותר ברשימה - כך חשיבותו בסרט עולה.
+\end_layout
+
+\begin_layout Standard
+בנוסף, צריך להוסיף את במאי הסרט לרשימה )היות והוא לא חלק מצוות השחקנים(.
 \begin_inset Newline newline
 \end_inset
 
-בנוסף, צריך להוסיף את במאי הסרט לרשימה )היות והוא לא חלק מצוות השחקנים(.
  התוספת הזו מתבצעת ב 
 \begin_inset CommandInset href
 LatexCommand href
@@ -1789,7 +1872,7 @@ j & \exists j:c_{i}^{j}=c\\
  אזי המשקל החדש יהיה 
 \begin_inset Formula 
 \[
-w_{i,j}=\sum_{c\in C_{i}\cap C_{j}}2^{-C(i,c)}+2^{-C(j,c)}
+w_{i,j}=\sum_{c\in C_{i}\cap C_{j}}1+2^{-C(i,c)}+2^{-C(j,c)}
 \]
 
 \end_inset
@@ -1803,7 +1886,7 @@ w_{i,j}=\sum_{c\in C_{i}\cap C_{j}}2^{-C(i,c)}+2^{-C(j,c)}
 \end_inset
 
  אזי 
-\begin_inset Formula $w_{1,2}=\underset{a}{\underbrace{1+1}}+\underset{c}{\underbrace{\frac{1}{4}+\frac{1}{2}}=2.75}$
+\begin_inset Formula $w_{1,2}=\underset{a}{\underbrace{1+1+1}}+\underset{c}{\underbrace{1+\frac{1}{4}+\frac{1}{2}}}=4.75$
 \end_inset
 
 .
@@ -1846,7 +1929,7 @@ literal "false"
 , נגדיר את המשקל החדש כך:
 \begin_inset Formula 
 \[
-w'_{i,j}=w_{i,j}+|G_{i}\cap G_{j}|
+w'_{i,j}=w_{i,j}\cdot(|G_{i}\cap G_{j}|+1)
 \]
 
 \end_inset
@@ -1862,16 +1945,7 @@ w'_{i,j}=w_{i,j}+|G_{i}\cap G_{j}|
 הדרך הטובה ביותר שיש לי כרגע כדי למדוד את איכות המשקלים של הקשתות ביחס לבעיה
  אותה אני מנסה לפתור, היא לחשב בעבור כל לוגיקה את מקדם המתאם של פירסון ביחס
  לההפרש בין הציונים של הסרטים.
- כלומר, יהיו סרטים 
-\begin_inset Formula $M_{i},M_{j}$
-\end_inset
-
-, ויהיו דירוגיהם 
-\begin_inset Formula $S_{i},S_{j}$
-\end_inset
-
-.
- היינו רוצים לראות ש 
+ כלומר, היינו רוצים לראות ש 
 \begin_inset Formula $R(|S_{i}-S_{j}|,w_{i,j})<0$
 \end_inset
 
@@ -1908,8 +1982,12 @@ w'_{i,j}=w_{i,j}+|G_{i}\cap G_{j}|
 
 נאמר ששיטה אחת טובה יותר מהשנייה אם מקדם המתאם של הראשונה גדול בערכו המוחלט
  מזו של השנייה )קשר מובהק יותר(.
- צריך לזכור שזו היוריסטיקה בלבד )אם זה היה המדד הטוב ביותר הייתי פשוט לוקח
- את ההפרש בתור הציון לקשת(
+ צריך לזכור שזו היוריסטיקה בלבד )אם היה ברור שזה יתן תוצאות טובות יותר -
+ היינו נשארים עם הדרך הראשונה, שבה ברור שהמקדם הוא 
+\begin_inset Formula $-1$
+\end_inset
+
+(
 \begin_inset Newline newline
 \end_inset
 
@@ -1928,13 +2006,8 @@ literal "false"
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="2" columns="7">
+<lyxtabular version="3" rows="7" columns="2">
 <features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -1942,52 +2015,9 @@ literal "false"
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
 לוגיקה
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
@@ -1996,6 +2026,207 @@ literal "false"
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $R$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+הפרש בין הדירוגים של סרטים עם שחקנים משותפים
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+התבססות על כמות שחקנים משותפים
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.039672$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+התבססות על כמות שחקנים משותפים לפי סדרם ברשימה
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.042627$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+התבססות על כמות קטגוריות משותפות
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.014543$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+שילוב לוגיקה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ולוגיקה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.06095$
+\end_inset
+
 
 \end_layout
 
@@ -2007,52 +2238,88 @@ literal "false"
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
+שילוב לוגיקה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+3
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ולוגיקה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+4
 \end_layout
 
 \end_inset
@@ -2061,6 +2328,9 @@ literal "false"
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $-0.058427$
+\end_inset
+
 
 \end_layout
 
@@ -2072,6 +2342,289 @@ literal "false"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+אפשר לשים לב שהקשר ממש לא מובהק באף אחת מהלוגיקות, ואף הקשר של 
+\begin_inset Quotes eld
+\end_inset
+
+שילוב לוגיקות
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ו
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+4
+\numeric off
+
+\begin_inset Quotes erd
+\end_inset
+
+ נראה על פניו טוב יותר מהקשר של 
+\begin_inset Quotes eld
+\end_inset
+
+שילוב לוגיקה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+3
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ולוגיקה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+4
+\numeric off
+
+\begin_inset Quotes erd
+\end_inset
+
+, אבל במבחן התוצאה דווקא הלוגיקה אחרונה הייתה המוצלחת ביותר מבניהן, ולכן
+ זו הלוגיקה שאיתה נמשיך בפרויקט.
+\end_layout
+
+\begin_layout Standard
+מכאן והלאה נבחן את החלוקה שלנו בראי שתי שיטות ליצירת הקשתות: שיטת ההפרש
+ בין הציונים, ושיטת 
+\begin_inset Quotes eld
+\end_inset
+
+שילוב לוגיקות
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+3
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ו
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+4
+\numeric off
+
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
