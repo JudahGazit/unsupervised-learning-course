@@ -1337,6 +1337,49 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
+כיוון שאין טעם להתעסק בסרטים עם דירוג נמוך מאוד, אנחנו מבצעים סינון על סרטים
+ שקיבלו רק דירוג גדול מ
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+5
+\numeric off
+: 
+\begin_inset CommandInset href
+LatexCommand href
+name "data_loader.py"
+target "https://github.com/JudahGazit/unsupervised-learning-course/blob/master/python_code/learning/data_loader.py"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 התרשים הבא הוא היסטוגרמה של כמות הסרטים שכל שחקן שיחק בהם.
  ניתן לראות שבאופן מובהק רוב השחקנים )במידע שלנו( הופיעו בסרט יחיד.
 \end_layout
@@ -1802,13 +1845,10 @@ dataset
 
 \begin_layout Standard
 בנוסף, צריך להוסיף את במאי הסרט לרשימה )היות והוא לא חלק מצוות השחקנים(.
-\begin_inset Newline newline
-\end_inset
-
  התוספת הזו מתבצעת ב 
 \begin_inset CommandInset href
 LatexCommand href
-name "python_code/learning/data_loader.py"
+name "data_loader.py"
 target "https://github.com/JudahGazit/unsupervised-learning-course/blob/master/python_code/learning/data_loader.py"
 literal "false"
 
@@ -1975,7 +2015,7 @@ w'_{i,j}=w_{i,j}\cdot(|G_{i}\cap G_{j}|+1)
 \uwave default
 \noun default
 \color inherit
-קיים יחס ליניארי שלילי בניהם )ככל שהציון גבוה יותר - כך ההפרש בין הציונים
+קיים יחס ליניארי שלילי בניהם )ככל שהציון לקשת גבוה יותר - כך ההפרש בין הדירוגים
  קטן יותר(.
 \begin_inset Newline newline
 \end_inset
@@ -2440,7 +2480,7 @@ literal "false"
 \begin_inset Quotes eld
 \end_inset
 
-שילוב לוגיקה
+שילוב לוגיקות
 \family roman
 \series medium
 \shape up
@@ -2494,7 +2534,7 @@ literal "false"
 \uwave default
 \noun default
 \color inherit
-ולוגיקה
+ו
 \family roman
 \series medium
 \shape up
@@ -2624,7 +2664,153 @@ literal "false"
 \begin_inset Quotes erd
 \end_inset
 
-.
+ )שלה נקרא מעתה 
+\begin_inset Quotes eld
+\end_inset
+
+שיטת רשימת השחקנים
+\begin_inset Quotes erd
+\end_inset
+
+(.
+\end_layout
+
+\begin_layout Subsubsection
+סטטיסטיקות על הגרף
+\end_layout
+
+\begin_layout Standard
+התרשים הבא מראה את כמות הסרטים הנמצאים בכל אחד מרכיבי הקשירות בגרף.
+ זה נתון חשוב מאוד, כי אם יש לנו הרבה מאוד רכיבי קשירות קטנים - אין לנו
+ בעצם במה למצוא את האשכולות שלנו.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename graph-connected-components.png
+	width 30page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+התרשימים הבאים מציגים היסטוגרמה של משקלי הקשתות בגרף.
+ משמאל - הלוגיקה מבוססת הפרש דירוגי הסרטים, מימין - הלוגיקה המבוססת על שיטת
+ רשימת השחקנים.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename graph-edge-weight-rating.png
+	width 30page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+לוגיקת הפרש דירוגים
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename graph-edge-weight-cast.png
+	width 30page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+לוגיקת רשימת השחקנים
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Subsection
