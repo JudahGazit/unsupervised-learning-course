@@ -2,7 +2,6 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import pandas as pd
 from sklearn import manifold
-from sklearn.cluster import DBSCAN
 from sklearn.mixture import GaussianMixture
 
 from python_code.learning.clustering.ICluster import ICluster
