@@ -3364,6 +3364,287 @@ TSNE
 אלגוריתמים גרפיים
 \end_layout
 
+\begin_layout Standard
+שיטה נוספת לחלוקת הגרף לאשכולות היא תוך שימוש באלגוריתמים גרפים.
+\end_layout
+
+\begin_layout Standard
+אלגוריתם
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+Louvain
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+הוא אלגוריתם שפותח בשנים האחרונות, ומתבסס על ה
+\lang english
+loss function
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+הבא )אליו הוא מחפש מינימום בצורה חמדנית(:
+\begin_inset Formula 
+\begin{align*}
+L & =-\frac{1}{2m}\left[\sum_{i,j}(w_{i,j}-\frac{\gamma k_{i}k_{j}}{2m})c(i,j)\right]\\
+c(i,j) & =\begin{cases}
+1 & i,j\text{ in the same community}\\
+0 & \text{otherwise}
+\end{cases}\\
+k_{i} & =\sum_{j}w_{i,j}\\
+m & =\sum_{i}k_{i}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+הפרמטר 
+\begin_inset Formula $\gamma\in[0,\infty]$
+\end_inset
+
+ מאפשר לקבוע את גודל האשכולות, כאשר 
+\begin_inset Formula $\gamma=0$
+\end_inset
+
+ כולם באותו אשכול, 
+\begin_inset Formula $\gamma=\infty$
+\end_inset
+
+ כולם באשכולות יחידים.
+\end_layout
+
+\begin_layout Standard
+הפעלת האלגוריתם מתבצעת ב 
+\begin_inset CommandInset href
+LatexCommand href
+name "python_code/learning/clustering/louvain.py"
+target "https://github.com/JudahGazit/unsupervised-learning-course/blob/master/python_code/learning/clustering/louvain.py"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+לאחר הפעלת האלגוריתם וקבלת קהילות, נרצה לחשב בעבור כל אחת מספר נתונים: כמה
+ סרטים יש באשכול, מה ממוצע הדירוגים של הסרטים באשכול, ומה ה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+precision
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+וה
+\lang english
+recall
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+אל מול ה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+groundtruth
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+- סרטים זוכי אוסקר.
+ הטבלה המוצגת כאן מציגה את תוצאות ההרצה בעבור 
+\begin_inset Formula $\gamma=0.5$
+\end_inset
+
+ 
+\end_layout
+
 \begin_layout Subsection
 מדידת איכות התוצר
 \end_layout

@@ -45,3 +45,15 @@ def precision_recall(stats):
     stats['win_nom_precision'] = 100 * stats.win_and_nominated_movies / stats.title
     stats['win_nom_recall'] = 100 * stats.win_and_nominated_movies / total_win_and_nom
     return stats
+
+
+def find_best_cut_by_max_rating(stats):
+    s = stats[['title', 'win_movies', 'max_raiting']].sort_values('max_raiting', ascending=False)
+    s.reset_index(inplace=True)
+    s['rolling_title'] = pd.Series([s.title[:r + 1].sum() for r in range(len(s.title))])
+    s['rolling_win'] = pd.Series([s.win_movies[:r + 1].sum() for r in range(len(s.win_movies))])
+    s['rolling_precision'] = s.rolling_win / s.rolling_title
+    total_win = s.win_movies.sum()
+    s['rolling_recall'] = s.rolling_win / total_win
+    best_rating_cut = s[(s.rolling_recall >= 0.5)].sort_values(['rolling_precision'], ascending=False).head(1)
+    return best_rating_cut
