@@ -3531,7 +3531,25 @@ literal "false"
 
 \begin_layout Standard
 לאחר הפעלת האלגוריתם וקבלת קהילות, נרצה לחשב בעבור כל אחת מספר נתונים: כמה
- סרטים יש באשכול, מה ממוצע הדירוגים של הסרטים באשכול, ומה ה
+ סרטים יש באשכול, מה ממוצע הדירוגים של הסרטים באשכול
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+name "community_stats"
+target "https://github.com/JudahGazit/unsupervised-learning-course/blob/master/python_code/learning/stats/cluster_stats.py#L4"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+, ומה ה
 \family roman
 \series medium
 \shape up
@@ -3668,7 +3686,25 @@ groundtruth
 \uwave default
 \noun default
 \color inherit
-- סרטים זוכי אוסקר.
+- סרטים זוכי אוסקר
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+name "precision_recall"
+target "https://github.com/JudahGazit/unsupervised-learning-course/blob/master/python_code/learning/stats/cluster_stats.py#L42"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
  הטבלה המוצגת כאן מציגה את תוצאות ההרצה בעבור 
 \begin_inset Formula $\gamma=1$
 \end_inset
@@ -4114,13 +4150,13 @@ recall
 \numeric off
 (
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset CommandInset href
 LatexCommand href
 name "find_best_cut_by_max_rating"
-target "https://github.com/JudahGazit/unsupervised-learning-course/blob/master/python_code/learning/stats/cluster_stats.py#L50"
+target "https://github.com/JudahGazit/unsupervised-learning-course/blob/master/python_code/learning/stats/cluster_stats.py#L53"
 literal "false"
 
 \end_inset
