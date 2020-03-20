@@ -3364,6 +3364,37 @@ TSNE
 אלגוריתמים גרפיים
 \end_layout
 
+\begin_layout Subsubsection
+אלגוריתם
+\family roman
+\series bold
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+Louvain
+\end_layout
+
 \begin_layout Standard
 שיטה נוספת לחלוקת הגרף לאשכולות היא תוך שימוש באלגוריתמים גרפים.
 \end_layout
@@ -3639,10 +3670,575 @@ groundtruth
 \color inherit
 - סרטים זוכי אוסקר.
  הטבלה המוצגת כאן מציגה את תוצאות ההרצה בעבור 
-\begin_inset Formula $\gamma=0.5$
+\begin_inset Formula $\gamma=1$
 \end_inset
 
+ )על בסיס גרף הבנוי ב
+\begin_inset Quotes erd
+\end_inset
+
+שיטת הפרש דירוגים
+\begin_inset Quotes erd
+\end_inset
+
+(.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename louvain-results.png
+	lyxscale 30
+	width 30page%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+תוצאות אישכול 
+\begin_inset Formula $\gamma=1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename louvain-cluster-parameter.png
+	lyxscale 30
+	width 30page%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+קורולציה בין כמות האוסקרים לנתונים שונים בכל אשכול עבור 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ שונה בכל פעם
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+כעת על מנת לייצר מה
+\lang english
+clusters
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
  
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+את שתי הקבוצות המבוקשות, צריך למצוא קריטריון לאבחנה בין הקבוצות.
+ הרצתי את האלגוריתם מספר פעמים, בכל פעם עם 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ שונה, ובדקתי מהו הפרמטר עם הקורולציה הגדולה ביותר לכמות הסרטים זוכי האוסקר
+ ב
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+cluster
+\lang hebrew
+.
+ הסרט בעל הדירוג המקסימלי בכל אשכול נראה כמו הבחירה הטובה ביותר.
+\begin_inset Newline newline
+\end_inset
+
+את החלוקה לשתי קבוצות נעשה באופן הבא: נבחר ערך 
+\begin_inset Formula $r$
+\end_inset
+
+.
+ אשכול 
+\begin_inset Formula $i$
+\end_inset
+
+ שבו הדירוג לסרט הטוב ביותר הוא 
+\begin_inset Formula $r_{i}$
+\end_inset
+
+ יהיה בקטגוריה 
+\begin_inset Formula $1$
+\end_inset
+
+ אם 
+\begin_inset Formula $r_{i}\geq r$
+\end_inset
+
+ , אחרת יהיה בקטגוריה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula $0$
+\end_inset
+
+.
+ כדי למצוא את הערך 
+\begin_inset Formula $r$
+\end_inset
+
+ האופטימלי, נריץ שוב את התהליך, ובעבור כל אחת נחפש את ה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+max rating
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+שיתן לנו את ה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+precision
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+הגדול ביותר )כל עוד ה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+recall
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+נותר מעל
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+50%
+\numeric off
+(
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+name "find_best_cut_by_max_rating"
+target "https://github.com/JudahGazit/unsupervised-learning-course/blob/master/python_code/learning/stats/cluster_stats.py#L50"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ התוצאות מוצגות כאן )על בסיס גרף הבנוי ב
+\begin_inset Quotes erd
+\end_inset
+
+שיטת הפרש דירוגים
+\begin_inset Quotes erd
+\end_inset
+
+(:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename louvain-optimal-max-size.png
+	width 30page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+נראה שלקחת 
+\begin_inset Formula $r=7.9$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+)הממוצע שלהם( יתן לנו תוצאות מיטביות.
+\end_layout
+
+\begin_layout Subsubsection
+שיטות נוספות
+\end_layout
+
+\begin_layout Standard
+במעלה הדרך, נבדקו שיטות גרפיות נוספות לחלוקת הגרף, כולן לא הוציאו תוצאות
+ טובות במיוחד:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+אשכול היררכי -
+\series default
+ נתן לכל היותר
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+precsion 5%, recall 76%
+\lang hebrew
+, כלומר יצר אשכול גדול מידי לפירוק
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+אשכול ספקטרלי
+\series default
+ - נתן תוצאה דומה, גם ממנה לא היה ניתן להפיק ערך
 \end_layout
 
 \begin_layout Subsection
