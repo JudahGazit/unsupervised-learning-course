@@ -4235,7 +4235,25 @@ literal "false"
 \begin_layout Itemize
 
 \series bold
-אשכול היררכי -
+אשכול היררכי
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+name "python_code/learning/clustering/hierarchy_clustering.py"
+target "https://github.com/JudahGazit/unsupervised-learning-course/blob/master/python_code/learning/clustering/hierarchy_clustering.py"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ -
 \series default
  נתן לכל היותר
 \family roman
@@ -4266,7 +4284,7 @@ literal "false"
 \lang english
 precsion 5%, recall 76%
 \lang hebrew
-, כלומר יצר אשכול גדול מידי לפירוק
+, כלומר יצר אשכול גדול עם דיוק נמוך
 \end_layout
 
 \begin_layout Itemize
