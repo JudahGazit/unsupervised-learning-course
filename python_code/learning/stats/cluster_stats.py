@@ -1,3 +1,6 @@
+import pandas as pd
+
+
 def community_stats(df, communities):
     df = df.copy()
     df = df.merge(communities, on=['title'])
