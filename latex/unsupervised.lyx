@@ -575,7 +575,7 @@ literal "false"
 \begin_inset Newline newline
 \end_inset
 
-כלומר, טיב הסרט יכול להיות קשור לסרט אחר לפי השחקנים שבו.
+כלומר, טיבו של סרט יכול להיות קשור לסרט אחר לפי השחקנים שבו.
 \end_layout
 
 \begin_layout Enumerate
@@ -1366,8 +1366,33 @@ literal "false"
 \noun default
 \color inherit
 5
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
 \numeric off
-: 
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+)מתבצע ב 
 \begin_inset CommandInset href
 LatexCommand href
 name "data_loader.py"
@@ -1376,7 +1401,7 @@ literal "false"
 
 \end_inset
 
-
+(
 \end_layout
 
 \begin_layout Standard
@@ -3798,32 +3823,6 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "45text%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename louvain-results.png
@@ -3833,79 +3832,10 @@ status open
 \end_inset
 
 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-תוצאות אישכול 
-\begin_inset Formula $\gamma=1$
-\end_inset
-
-
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "45text%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename louvain-cluster-parameter.png
-	lyxscale 30
-	width 30page%
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-קורולציה בין כמות האוסקרים לנתונים שונים בכל אשכול עבור 
-\begin_inset Formula $\gamma$
-\end_inset
-
- שונה בכל פעם
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
+\begin_layout Subsubsection*
+אבחנה בין האשכולות השונים
 \end_layout
 
 \begin_layout Standard
@@ -3974,10 +3904,30 @@ clusters
 cluster
 \lang hebrew
 .
- הסרט בעל הדירוג המקסימלי בכל אשכול נראה כמו הבחירה הטובה ביותר.
-\begin_inset Newline newline
+ ה
+\begin_inset Quotes erd
 \end_inset
 
+סרט בעל הדירוג המקסימלי
+\begin_inset Quotes erd
+\end_inset
+
+ בכל אשכול נראה כמו הבחירה הטובה ביותר.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename louvain-cluster-parameter.png
+	lyxscale 30
+	width 30page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 את החלוקה לשתי קבוצות נעשה באופן הבא: נבחר ערך 
 \begin_inset Formula $r$
 \end_inset
@@ -3999,7 +3949,7 @@ cluster
 \begin_inset Formula $r_{i}\geq r$
 \end_inset
 
- , אחרת יהיה בקטגוריה
+, אחרת יהיה בקטגוריה
 \family roman
 \series medium
 \shape up
@@ -4030,7 +3980,10 @@ cluster
 \end_inset
 
 .
- כדי למצוא את הערך 
+\begin_inset Newline newline
+\end_inset
+
+כדי למצוא את הערך 
 \begin_inset Formula $r$
 \end_inset
 
@@ -4244,7 +4197,85 @@ literal "false"
 \end_inset
 
 .
- התוצאות מוצגות כאן )על בסיס גרף הבנוי ב
+ כיוון שיש לנו מספר סופי של אשכולות בכל פעם, מספיק לרוץ עליהם בצורה ממויינת
+ לפי הדירוג המקסימלי בכל אשכול, בסדר יורד.
+ במילים אחרות:
+\begin_inset Newline newline
+\end_inset
+
+אם 
+\begin_inset Formula $\{M_{i}\}$
+\end_inset
+
+ כלל הסרטים, 
+\begin_inset Formula $S_{i}$
+\end_inset
+
+ דעירוג הסרט ה 
+\begin_inset Formula $i$
+\end_inset
+
+, 
+\begin_inset Formula $\{I_{i}\}_{i=1}^{k}$
+\end_inset
+
+ קבוצות האינדקסים )זרות בזוגות( המייצגים אשכול - כלומר 
+\begin_inset Formula $M_{i},M_{j}$
+\end_inset
+
+ באותו אשכול 
+\begin_inset Formula $s$
+\end_inset
+
+ 
+\begin_inset Formula $\Leftrightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $i,j\in I_{s}$
+\end_inset
+
+.
+ נגדיר 
+\begin_inset Formula $m_{i}=\max_{j\in I_{i}}S_{j}$
+\end_inset
+
+.
+ נמיין את 
+\begin_inset Formula $I_{i}$
+\end_inset
+
+ כך ש: 
+\begin_inset Formula $m_{i}\geq m_{j}$
+\end_inset
+
+ לכל 
+\begin_inset Formula $i<j$
+\end_inset
+
+ .
+ כעת עלינו לפתור את:
+\begin_inset Formula 
+\begin{align*}
+\max_{1\leq t\leq k}Precision(\{I_{1},...,I_{t}\})\\
+S.T\ \ \ Recall(\{I_{1},...,I_{t}\})\geq0.5
+\end{align*}
+
+\end_inset
+
+ שזה כמובן ניתן לפתרון ע
+\begin_inset Quotes erd
+\end_inset
+
+י ריצה על 
+\begin_inset Formula $1\leq t\leq k$
+\end_inset
+
+ האפשריים.
+\end_layout
+
+\begin_layout Standard
+לפי התוצאות מוצגות כאן )על בסיס גרף הבנוי ב
 \begin_inset Quotes erd
 \end_inset
 
@@ -4899,9 +4930,9 @@ literal "false"
 \end_inset
 
 .
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Standard
 יהיו 
 \begin_inset Formula $\{S_{i}^{0}\}_{i=1}^{N},\ \{S_{i}^{1}\}_{i=1}^{N}$
 \end_inset
@@ -4942,41 +4973,12 @@ literal "false"
 ,
 \numeric on
 1
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
 \numeric off
-\bar no
-\strikeout off
-\xout off
-\uuline off
-\uwave off
-\noun off
-\color none
- 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\xout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
 .
- השערת האפס שלנו היא ששתיהן מגיעות מאותה התפלגות נורמלית 
-\begin_inset Formula $\mu_{0}=\mu_{1}$
-\end_inset
-
-.
+ השערת האפס שלנו היא ששתיהן מגיעות מאותה התפלגות.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsubsection*
 
 \series bold
 בעבור לוגיקת הפרש הדירוגים:
@@ -5041,7 +5043,7 @@ Levene
 \color inherit
 \lang english
 
-\begin_inset Formula $pvalue=0.335>0.05$
+\begin_inset Formula $p=0.335>0.05$
 \end_inset
 
 
@@ -5367,7 +5369,7 @@ p-p
 \end_inset
 
  ונקבל 
-\begin_inset Formula $pvalue=0.21378>0.05$
+\begin_inset Formula $p=0.21378>0.05$
 \end_inset
 
 , כלומר גם הוא לא מחזיר
@@ -5461,14 +5463,14 @@ significat
 \end_inset
 
  והוא מחזיר לנו 
-\begin_inset Formula $pvalue=9.60642\cdot10^{-18}<0.05$
+\begin_inset Formula $p=9.60642\cdot10^{-18}<0.05$
 \end_inset
 
 , כלומר באופן מובהק ניתן להגיד שהנחת האפס שלנו נדחית וההפרדה שיצרנו בין
  שתי הקבוצות הינה משמעותית.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsubsection*
 
 \series bold
 בעבור לוגיקת רשימת השחקנים:
@@ -5477,7 +5479,7 @@ significat
 \begin_layout Standard
 נרצה להפעיל את אותו התהליך.
  מבחן שפירו על סדרת ההפרשים החזיר 
-\begin_inset Formula $pvalue=0.3652>0.05$
+\begin_inset Formula $p=0.3652>0.05$
 \end_inset
 
  , אבל מבחן
@@ -5535,7 +5537,7 @@ Levene
 \noun default
 \color inherit
 החזיר 
-\begin_inset Formula $pvalue=1.7011\cdot10^{-5}<0.05$
+\begin_inset Formula $p=1.7011\cdot10^{-5}<0.05$
 \end_inset
 
  ולכן השערת האפס שלו )שהשונויות בין הקבוצות שוות( נדחית, כלומר לא ניתן להפעיל
@@ -5724,10 +5726,11 @@ scipy.stats.ttest_ind
 \end_inset
 
 לאחר הפעלתו נקבל 
-\begin_inset Formula $pvalue=5.7311\cdot10^{-7}<0.05$
+\begin_inset Formula $p=5.7311\cdot10^{-7}<0.05$
 \end_inset
 
- כלומר גם כאן השערת האפס נדחית וניתן להגיד שההפרדה בין הקבוצות הינה משמעותית.
+ כלומר גם כאן השערת האפס של המבחן נדחית וניתן להגיד שההפרדה בין הקבוצות
+ הינה משמעותית.
 \end_layout
 
 \begin_layout Standard
