@@ -1,6 +1,7 @@
 import pandas as pd
 from IPython.core.display import display
 
+from python_code.learning.clustering.hierarchy_clustering import HierarchyClustering
 from python_code.learning.clustering.louvain import Louvain
 from python_code.learning.data_loader import load_data
 from python_code.learning.graph.edges_logics.cast_priority_factor import CastPriorityFactor
@@ -23,7 +24,7 @@ def get_graph(df):
 
 def stats(df, partition):
     stats = community_stats(df, partition)
-    stats = stats_threshold(stats)
+    stats = stats_threshold(stats, 7.9)
     stats = precision_recall(stats)
     return stats
 

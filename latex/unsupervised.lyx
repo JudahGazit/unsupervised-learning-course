@@ -3517,6 +3517,67 @@ m & =\sum_{i}k_{i}
 \end_layout
 
 \begin_layout Standard
+ה
+\lang english
+loss function
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ כפי שהצגנו בכיתה, מייצג את הציפיה שלנו מ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+cluster
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+מוצלח.
+\end_layout
+
+\begin_layout Standard
 הפרמטר 
 \begin_inset Formula $\gamma\in[0,\infty]$
 \end_inset
@@ -5777,7 +5838,7 @@ Louvain
 \begin_inset Formula $246$
 \end_inset
 
- )
+ סרטים )
 \begin_inset Formula $5.7\%$
 \end_inset
 
