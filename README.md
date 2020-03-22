@@ -1,5 +1,6 @@
 # unsupervised-learning-course
 Unsupervised Learning Course - Final work, Winter 2020, BIU
+pdf file: https://github.com/JudahGazit/unsupervised-learning-course/blob/master/unsupervised.pdf
 
 Project Structure: <br>
 ```
