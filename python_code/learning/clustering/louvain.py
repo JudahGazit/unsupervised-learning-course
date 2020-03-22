@@ -6,7 +6,7 @@ from python_code.learning.clustering.ICluster import ICluster
 
 
 class Louvain(ICluster):
-    def __init__(self, resolution=40, **kwargs):
+    def __init__(self, resolution=60, **kwargs):
         self.cluster_engine = skn.clustering.Louvain('python', resolution=resolution, random_state=None, **kwargs)
 
     def cluster(self, graph: nx.Graph):

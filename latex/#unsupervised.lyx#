@@ -1660,8 +1660,9 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-המטרה שלנו אם כן היא לבנות תחילה את גרף הקשרים בין הסרטים, או במילים אחרות
- - להחליט מה הן הקשתות המחברות סרטים.
+המטרה שלנו אם כן היא לבנות תחילה את גרף הקשרים בין הסרטים.
+ את הגרף תמיד נבנה באופן הבא: ניצור קשת בין שני סרטים אם יש להם שחקן משותף.
+ כעת נשאלת השאלה מה יהיו משקלי הקשתות המחברות סרטים.
  לצורך כך נבדקו מספר גישות.
 \end_layout
 
@@ -1876,7 +1877,7 @@ literal "false"
 
 \end_inset
 
- של המשקל הזה תהיה זו: כעת נניח שיש חשיבות לסדר בקבוצה 
+ של המשקל הזה תהיה תוך הנחה שיש חשיבות לסדר בקבוצה 
 \begin_inset Formula $C_{i}$
 \end_inset
 
@@ -2022,8 +2023,9 @@ w'_{i,j}=w_{i,j}\cdot(|G_{i}\cap G_{j}|+1)
 
 נאמר ששיטה אחת טובה יותר מהשנייה אם מקדם המתאם של הראשונה גדול בערכו המוחלט
  מזו של השנייה )קשר מובהק יותר(.
- צריך לזכור שזו היוריסטיקה בלבד )אם היה ברור שזה יתן תוצאות טובות יותר -
- היינו נשארים עם הדרך הראשונה, שבה ברור שהמקדם הוא 
+ צריך לזכור שזו היוריסטיקה בלבד )אם היה ברור שזה המשקל שאיתו נוכל לחלק את
+ הגרף לשתי הקבוצות המדוברות - היינו נשארים עם הדרך הראשונה, שבה ברור שהמקדם
+ הוא 
 \begin_inset Formula $-1$
 \end_inset
 
@@ -2683,6 +2685,20 @@ literal "false"
 התרשים הבא מראה את כמות הסרטים הנמצאים בכל אחד מרכיבי הקשירות בגרף.
  זה נתון חשוב מאוד, כי אם יש לנו הרבה מאוד רכיבי קשירות קטנים - אין לנו
  בעצם במה למצוא את האשכולות שלנו.
+ נשים לב
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ - אנחנו תמיד בונים את הגרף באותה הצורה, ולכן הגרף רלוונטי לשתי הלוגיקות.
 \end_layout
 
 \begin_layout Standard
@@ -2698,7 +2714,7 @@ literal "false"
 
 \begin_layout Standard
 התרשימים הבאים מציגים היסטוגרמה של משקלי הקשתות בגרף.
- משמאל - הלוגיקה מבוססת הפרש דירוגי הסרטים, מימין - הלוגיקה המבוססת על שיטת
+ מימין - הלוגיקה מבוססת הפרש דירוגי הסרטים, משמאל - הלוגיקה המבוססת על שיטת
  רשימת השחקנים.
 \end_layout
 
@@ -2809,20 +2825,2960 @@ status open
 
 \end_layout
 
+\begin_layout Subsection
+חלוקת הגרף לאשכולות
+\end_layout
+
 \begin_layout Standard
+נבדוק מספר גישות למציאת אשכולות בגרף שיצרנו.
+\end_layout
+
+\begin_layout Subsubsection
+המרת הגרף לקאורדינטות
+\end_layout
+
+\begin_layout Standard
+אלגוריתם
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+MDS
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ מאפשר לקחת את מטריצת המרחקים 
+\begin_inset Formula $d_{i,j}^{2}$
+\end_inset
+
+ בין הקשתות בגרף, ולהפוך כל קודקוד 
+\begin_inset Formula $i$
+\end_inset
+
+ לנקודה 
+\begin_inset Formula $\bar{x_{i}}$
+\end_inset
+
+ כך ש 
+\begin_inset Formula $d(x_{i},x_{j})^{2}=d_{i,j}^{2}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+לאחר הפיכת הגרף לנקודות במרחב, אפשר להפעיל אלגוריתמים למציאת אשכולות כמו
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+Kmeans, GMM
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+וכו'.
+ המימוש קורה ב 
+\begin_inset CommandInset href
+LatexCommand href
+name "python_code/learning/clustering/mds_clustering.py"
+target "https://github.com/JudahGazit/unsupervised-learning-course/blob/master/python_code/learning/clustering/mds_clustering.py"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+צריך לשים לב שבין חלק מהסרטים אין לנו קשת בכלל )לחילופין - קיימת קשת במשקל
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+0
+\numeric off
+(, ואנחנו רוצים שככל שהקשת 
+\begin_inset Quotes eld
+\end_inset
+
+כבדה
+\begin_inset Quotes erd
+\end_inset
+
+ יותר - כך יצוג הנקודות יהיה קרוב יותר.
+ אלגוריתם
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+MDS
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+כפי שממומש ב
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+sklearn
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+מתייחס ל
+\numeric on
+0
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+בתור 
+\begin_inset Quotes eld
+\end_inset
+
+קשת לא קיימת
+\begin_inset Quotes erd
+\end_inset
+
+, ועל כן צריך לשמור שערכים אלו יהיו 
+\begin_inset Formula $0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+d_{i,j}^{\epsilon}=\begin{cases}
+\frac{1}{w_{i,j}} & w_{i,j}>0\\
+0 & \text{otherwise}
+\end{cases}
+\]
+
+\end_inset
+
 
 \end_layout
 
-\begin_layout Subsection
-חלוקת הגרף לאשכולות
+\begin_layout Standard
+ההמרה הזו מתבצעת לפני הרצת
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+MDS
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+על הגרף.
+ לאחר הרצת ההמרה ל
+\numeric on
+2
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+מימדים, קיבלנו את התמונה הבאה.
+ בכתום - סרטים שהם זוכי אוסקר.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename graph-mds-with-oscars.png
+	width 30page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+התמונה שקיבלנו בעצם מציגה שלא ניתן להגיע לאישכול משמעותי )ביחס לזוכי האוסקר(
+ על גבי ההמרה הזו.
+\end_layout
+
+\begin_layout Standard
+ננסה להחליף את האלגוריתם של
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+MDS
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+למשהו אחר: ננסה להפעיל את אלגוריתם
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+TSNE
+\lang hebrew
+.
+ גם כאן התמונה לא טובה.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename graph-tsne-with-oscars.png
+	width 30page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+תמונות דומות התקבלו גם כשהחלפתי את הקשתות בגרף ל
+\begin_inset Quotes erd
+\end_inset
+
+שיטת רשימת השחקנים
+\begin_inset Quotes erd
+\end_inset
+
+, וגם כשניסיתי להגדיל את מספר המימדים.
+ כלומר נראה שהדרך לפתרון לא תוכל להעזר בהמרת הגרף לקאורדינטות.
+\end_layout
+
+\begin_layout Subsubsection
+אלגוריתמים גרפיים
+\end_layout
+
+\begin_layout Subsubsection
+אלגוריתם
+\family roman
+\series bold
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+Louvain
+\end_layout
+
+\begin_layout Standard
+שיטה נוספת לחלוקת הגרף לאשכולות היא תוך שימוש באלגוריתמים גרפים.
+\end_layout
+
+\begin_layout Standard
+אלגוריתם
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+Louvain
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+הוא אלגוריתם שפותח בשנים האחרונות, ומתבסס על ה
+\lang english
+loss function
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+הבא )אליו הוא מחפש מינימום בצורה חמדנית(:
+\begin_inset Formula 
+\begin{align*}
+L & =-\frac{1}{2m}\left[\sum_{i,j}(w_{i,j}-\frac{\gamma k_{i}k_{j}}{2m})c(i,j)\right]\\
+c(i,j) & =\begin{cases}
+1 & i,j\ \ \text{in\_same\_community}\\
+0 & \text{otherwise}
+\end{cases}\\
+k_{i} & =\sum_{j}w_{i,j}\\
+m & =\sum_{i}k_{i}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+הפרמטר 
+\begin_inset Formula $\gamma\in[0,\infty]$
+\end_inset
+
+ מאפשר לקבוע את גודל האשכולות, כאשר 
+\begin_inset Formula $\gamma=0$
+\end_inset
+
+ כולם באותו אשכול, 
+\begin_inset Formula $\gamma=\infty$
+\end_inset
+
+ כולם באשכולות יחידים.
+\end_layout
+
+\begin_layout Standard
+הפעלת האלגוריתם מתבצעת ב 
+\begin_inset CommandInset href
+LatexCommand href
+name "python_code/learning/clustering/louvain.py"
+target "https://github.com/JudahGazit/unsupervised-learning-course/blob/master/python_code/learning/clustering/louvain.py"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+לאחר הפעלת האלגוריתם וקבלת קהילות, נרצה לחשב בעבור כל אחת מספר נתונים: כמה
+ סרטים יש באשכול, מה ממוצע הדירוגים של הסרטים באשכול
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+name "community_stats"
+target "https://github.com/JudahGazit/unsupervised-learning-course/blob/master/python_code/learning/stats/cluster_stats.py#L4"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+, ומה ה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+precision
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+וה
+\lang english
+recall
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+אל מול ה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+groundtruth
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+- סרטים זוכי אוסקר
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+name "precision_recall"
+target "https://github.com/JudahGazit/unsupervised-learning-course/blob/master/python_code/learning/stats/cluster_stats.py#L42"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ הטבלה המוצגת כאן מציגה את תוצאות ההרצה בעבור 
+\begin_inset Formula $\gamma=1$
+\end_inset
+
+ )על בסיס גרף הבנוי ב
+\begin_inset Quotes erd
+\end_inset
+
+שיטת הפרש דירוגים
+\begin_inset Quotes erd
+\end_inset
+
+(.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename louvain-results.png
+	lyxscale 30
+	width 30page%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+תוצאות אישכול 
+\begin_inset Formula $\gamma=1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename louvain-cluster-parameter.png
+	lyxscale 30
+	width 30page%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+קורולציה בין כמות האוסקרים לנתונים שונים בכל אשכול עבור 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ שונה בכל פעם
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+כעת על מנת לייצר מה
+\lang english
+clusters
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+את שתי הקבוצות המבוקשות, צריך למצוא קריטריון לאבחנה בין הקבוצות.
+ הרצתי את האלגוריתם מספר פעמים, בכל פעם עם 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ שונה, ובדקתי מהו הפרמטר עם הקורולציה הגדולה ביותר לכמות הסרטים זוכי האוסקר
+ ב
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+cluster
+\lang hebrew
+.
+ הסרט בעל הדירוג המקסימלי בכל אשכול נראה כמו הבחירה הטובה ביותר.
+\begin_inset Newline newline
+\end_inset
+
+את החלוקה לשתי קבוצות נעשה באופן הבא: נבחר ערך 
+\begin_inset Formula $r$
+\end_inset
+
+.
+ אשכול 
+\begin_inset Formula $i$
+\end_inset
+
+ שבו הדירוג לסרט הטוב ביותר הוא 
+\begin_inset Formula $r_{i}$
+\end_inset
+
+ יהיה בקטגוריה 
+\begin_inset Formula $1$
+\end_inset
+
+ אם 
+\begin_inset Formula $r_{i}\geq r$
+\end_inset
+
+ , אחרת יהיה בקטגוריה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula $0$
+\end_inset
+
+.
+ כדי למצוא את הערך 
+\begin_inset Formula $r$
+\end_inset
+
+ האופטימלי, נריץ שוב את התהליך, ובעבור כל אחת נחפש את ה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+max rating
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+שיתן לנו את ה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+precision
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+הגדול ביותר )כל עוד ה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+recall
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+נותר מעל
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+50%
+\numeric off
+(
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+name "find_best_cut_by_max_rating"
+target "https://github.com/JudahGazit/unsupervised-learning-course/blob/master/python_code/learning/stats/cluster_stats.py#L53"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ התוצאות מוצגות כאן )על בסיס גרף הבנוי ב
+\begin_inset Quotes erd
+\end_inset
+
+שיטת הפרש דירוגים
+\begin_inset Quotes erd
+\end_inset
+
+(:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename louvain-optimal-max-size.png
+	width 30page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+נראה שלקחת 
+\begin_inset Formula $r=7.9$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+)הממוצע שלהם( יתן לנו תוצאות מיטביות.
+\end_layout
+
+\begin_layout Subsubsection
+שיטות נוספות
+\end_layout
+
+\begin_layout Standard
+במעלה הדרך, נבדקו שיטות גרפיות נוספות לחלוקת הגרף, כולן לא הוציאו תוצאות
+ טובות במיוחד:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+אשכול היררכי
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+name "python_code/learning/clustering/hierarchy_clustering.py"
+target "https://github.com/JudahGazit/unsupervised-learning-course/blob/master/python_code/learning/clustering/hierarchy_clustering.py"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ -
+\series default
+ נתן לכל היותר
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+precision 5%, recall 76%
+\lang hebrew
+, כלומר יצר אשכול גדול עם דיוק נמוך
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+אשכול ספקטרלי
+\series default
+ - נתן תוצאה דומה, גם ממנה לא היה ניתן להפיק ערך.
 \end_layout
 
 \begin_layout Subsection
 מדידת איכות התוצר
 \end_layout
 
+\begin_layout Standard
+בסופו של דבר החלוקה לאשכולות מתבצעת בדרך הבאה:
+\end_layout
+
+\begin_layout Itemize
+בניית גרף לפי לוגיקת קשתות מסוימת
+\end_layout
+
+\begin_layout Itemize
+הרצת אלגוריתם
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+Louvain
+\end_layout
+
+\begin_layout Itemize
+כל אשכול המכיל סרט שדירוגו גבוה מ 
+\begin_inset Formula $7.9$
+\end_inset
+
+ נכנס לקטגוריה 
+\begin_inset Formula $1$
+\end_inset
+
+, אחרת נכנס לקטגוריה 
+\begin_inset Formula $0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+לאחר אופטימיזצית
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+hyper parameters
+\lang hebrew
+, בחרתי 
+\begin_inset Formula $\gamma=60$
+\end_inset
+
+.
+ מוצגות כאן התוצאות על החלוקה לקבוצות
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+0
+\numeric off
+,
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+באופן הטוב ביותר לשתי השיטות:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename louvain-results-cast.png
+	width 30page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+תוצאות אשכול - לוגיקת רשימת שחקנים
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename louvain-results-rates.png
+	width 30page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+תוצאות אשכול - לוגיקת הפרש דירוגים
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+כעת לאחר קבלת התוצאות, נרצה להבין כמה ההפרדה בין הקבוצות הנ
+\begin_inset Quotes erd
+\end_inset
+
+ל )בכל אחת מהלוגיקות( היא מובהקת
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+)
+\lang english
+(significant
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+מבחינה סטטיסטית.
+ החלק הזה קורה ב 
+\begin_inset CommandInset href
+LatexCommand href
+name "python_code/learning/stats/hypothesis_test.py"
+target "https://github.com/JudahGazit/unsupervised-learning-course/blob/master/python_code/learning/stats/hypothesis_test.py"
+literal "false"
+
+\end_inset
+
+.
+ נבחן את טיב ההפרדה בניהם לפי הדירוג של הסרטים שהם מכילים.
+ נרצה לעשות זאת בעזרת מבחן
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+t
+\lang hebrew
+.
+\begin_inset Newline newline
+\end_inset
+
+מבחן
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+t
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+דורש מאיתנו שני תנאי קדם: שונות שווה בין הקבוצות, ושההפרש בין הקבוצות יתפלג
+ נורמלית.
+ לפני שנוכל להפעיל את מבחן
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+t
+\lang hebrew
+, עלינו תחילה להפעיל מבחנים נוספים שיעזרו לנו לאשש את הנחות היסוד האלו.
+ את כל התהליך אנחנו מריצים על
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\begin_inset Formula $N=100$
+\end_inset
+
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+רשומות רנדומיות מכל אחת מהקבוצות
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+name "split_to_groups"
+target "https://github.com/JudahGazit/unsupervised-learning-course/blob/master/python_code/learning/stats/hypothesis_test.py#L9"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+יהיו 
+\begin_inset Formula $\{S_{i}^{0}\}_{i=1}^{N},\ \{S_{i}^{1}\}_{i=1}^{N}$
+\end_inset
+
+ שתי הסדרות של המ
+\begin_inset Quotes erd
+\end_inset
+
+מ המייצגים את הציון של הסרטים מקבוצות
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+0
+\numeric off
+,
+\numeric on
+1
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+.
+ השערת האפס שלנו היא ששתיהן מגיעות מאותה התפלגות נורמלית 
+\begin_inset Formula $\mu_{0}=\mu_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+בעבור לוגיקת הפרש הדירוגים:
+\end_layout
+
+\begin_layout Standard
+כדי לבחון תחילה שהשונות שווה בין הקבוצות, נפעיל את מבחן
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+Levene
+\lang hebrew
+.
+ לאחר ההפעלה נקבל
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+
+\begin_inset Formula $pvalue=0.335>0.05$
+\end_inset
+
+
+\lang hebrew
+, כלומר ה
+\lang english
+pvalue
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+איננו מובהק ולכן ההנחה שלנו מחזיקה.
+\end_layout
+
+\begin_layout Standard
+כעת נסתכל על סדרת המ
+\begin_inset Quotes erd
+\end_inset
+
+מ 
+\begin_inset Formula $\{D_{i}\}_{i=1}^{N}$
+\end_inset
+
+ כאשר 
+\begin_inset Formula $D_{i}=S_{i}^{0}-S_{i}^{1}$
+\end_inset
+
+.
+ נרצה לבדוק את הטענה שהמ
+\begin_inset Quotes erd
+\end_inset
+
+מ הנ
+\begin_inset Quotes erd
+\end_inset
+
+ל מתפלג נורמלית.
+ התרשימים הבאים מציגים היסטוגרמה של המ
+\begin_inset Quotes erd
+\end_inset
+
+מ וגרף
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+p-p
+\lang hebrew
+.
+ היינו מצפים מההיסטוגרמה להיראות כמו פעמון, ומגרף
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+p-p
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+להיצמד לקו הישר.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename louvain-results-rates-hist.png
+	width 30page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+היסטוגרמה - 
+\begin_inset Formula $D_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename louvain-results-rates-p-p.png
+	width 30page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+גרף
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+p-p
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+- 
+\begin_inset Formula $D_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+נפעיל את מבחן שפירו על 
+\begin_inset Formula $\{D_{i}\}$
+\end_inset
+
+ ונקבל 
+\begin_inset Formula $pvalue=0.21378>0.05$
+\end_inset
+
+, כלומר גם הוא לא מחזיר
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+pvalue
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ שהוא 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+significat
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ועל כן גם ההנחה הזו מחזיקה.
+\end_layout
+
+\begin_layout Standard
+לאחר שבדקנו את שתי ההנחות ניתן להפעיל את מבחן 
+\begin_inset Formula $t$
+\end_inset
+
+ והוא מחזיר לנו 
+\begin_inset Formula $pvalue=9.60642\cdot10^{-18}<0.05$
+\end_inset
+
+, כלומר באופן מובהק ניתן להגיד שהנחת האפס שלנו נדחית וההפרדה שיצרנו בין
+ שתי הקבוצות הינה משמעותית.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+בעבור לוגיקת רשימת השחקנים:
+\end_layout
+
+\begin_layout Standard
+נרצה להפעיל את אותו התהליך.
+ מבחן שפירו על סדרת ההפרשים החזיר 
+\begin_inset Formula $pvalue=0.3652>0.05$
+\end_inset
+
+ , אבל מבחן
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+Levene
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+החזיר 
+\begin_inset Formula $pvalue=1.7011\cdot10^{-5}<0.05$
+\end_inset
+
+ ולכן השערת האפס שלו )שהשונויות בין הקבוצות שוות( נדחית, כלומר לא ניתן להפעיל
+ את מבחן
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+t
+\lang hebrew
+.
+\end_layout
+
+\begin_layout Standard
+במקרה הזה נוכל להפעיל את
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+Welch's t-test
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+- הוא איננו מניח שהשונות של הסדרות שווה ולכן יהיה יעיל בהתמודדות עם המצב
+ הזה.
+ כדי לעבור בין
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+ttest
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ל
+\lang english
+welch's
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+בפייתון צריך בסה
+\begin_inset Quotes erd
+\end_inset
+
+כ להעביר פרמטר שונה לפונקציה 
+\lang english
+scipy.stats.ttest_ind
+\lang hebrew
+.
+\begin_inset Newline newline
+\end_inset
+
+לאחר הפעלתו נקבל 
+\begin_inset Formula $pvalue=5.7311\cdot10^{-7}<0.05$
+\end_inset
+
+ כלומר גם כאן השערת האפס נדחית וניתן להגיד שההפרדה בין הקבוצות הינה משמעותית.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
 \begin_layout Section
 סיכום
+\end_layout
+
+\begin_layout Standard
+לפי ה
+\lang english
+dataset
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+הנתון, קיימים ב
+\lang english
+netflix
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\begin_inset Formula $4283$
+\end_inset
+
+ סרטים שונים.
+ בסופו של התהליך המוצג כאן, המתבסס על הצמדת הסרטים לדירוגיהם באתר 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+IMDB
+\lang hebrew
+, קיבלנו קבוצת סרטים בגודל 
+\begin_inset Formula $246$
+\end_inset
+
+ )
+\begin_inset Formula $5.7\%$
+\end_inset
+
+ מהכמות המקורית(, המכילים 
+\begin_inset Formula $54\%$
+\end_inset
+
+ מכלל הסרטים זוכי האוסקר בנטפליקס, ודירוגיהם שונים מהותית מדירוגי יתר הסרטים,
+ וזאת בהתבססות על שחקנים משותפים בין סרטים בלבד.
+ 
+\end_layout
+
+\begin_layout Standard
+ביציאה לדרך, הנחתי שככל הנראה ישנה קורולציה בין אוכלוסיית השחקנים בסרטים
+ לזכייה באוסקר, בתור אינדיקטור ליצירת 
+\begin_inset Quotes eld
+\end_inset
+
+קבוצת הסרטים ששווה לצפות בהם
+\begin_inset Quotes erd
+\end_inset
+
+.
+ לאחר הפעלת התהליך, קיבלנו הפרדה משמעותית על גרף הקשרים בין הסרטים המבוססים
+ על שחקניהם, כך שבסופו של דבר קיבלנו קבוצת סרטים המכילה את מרבית הסרטים
+ זוכי האוסקר.
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \end_body

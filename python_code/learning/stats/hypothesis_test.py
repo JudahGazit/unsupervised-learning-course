@@ -14,8 +14,8 @@ def split_to_groups(df):
     return g0, g1
 
 
-def run_ttest(col, g0, g1):
-    ttest = scipy.stats.ttest_ind(g0[col], g1[col], equal_var=False)
+def run_ttest(col, g0, g1, w_test=True):
+    ttest = scipy.stats.ttest_ind(g0[col], g1[col], equal_var=not w_test)
     display(ttest)
 
 
@@ -31,6 +31,7 @@ def run_shapiro(diff):
 def run_levene(col, g0, g1):
     levene_homogenity = scipy.stats.levene(g0[col], g1[col])
     display(levene_homogenity)
+    return levene_homogenity
 
 
 def summerize(col, df):
@@ -44,7 +45,7 @@ def test(df, partition, col='averageRating'):
     We try to compare 2 samples from the groups.
     We summarize the the data, and then run 3 tests:
     1. levenve test - to see if the variance is equal between the cluster.
-        since the answer in owr case is negative, we pass the param `equal_var=False` to the ttest to initiate Welch's test
+        if the answer in owr case is negative, we pass the param `equal_var=False` to the ttest to initiate Welch's test
     2. We test if the difference between the groups to be a normal distribution. First we do it visually,
         and afterward with Shapiro
     3. We run Welch's t-test after the assumptions have met.
@@ -59,7 +60,7 @@ def test(df, partition, col='averageRating'):
     g0, g1 = split_to_groups(df)
 
     summerize(col, df)
-    run_levene(col, g0, g1)
+    levene_homogenity = run_levene(col, g0, g1)
     diff = g1[col] - g0[col]
     run_shapiro(diff)
-    run_ttest(col, g0, g1)
+    run_ttest(col, g0, g1, levene_homogenity.pvalue <= 0.05)
