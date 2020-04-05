@@ -8,4 +8,4 @@ pandas
 scipy
 sklearn
 networkx
-sknetwork
+scikit-network
