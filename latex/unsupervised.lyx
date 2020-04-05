@@ -1703,7 +1703,7 @@ literal "false"
 \end_inset
 
  קבוצת השחקנים המשחקים בסרט 
-\begin_inset Formula $i$
+\begin_inset Formula $M_{i}$
 \end_inset
 
 .
@@ -1712,18 +1712,24 @@ literal "false"
 \end_inset
 
  הדירוג של הסרט 
-\begin_inset Formula $i$
+\begin_inset Formula $M_{i}$
 \end_inset
 
 .
 \end_layout
 
-\begin_layout Standard
-הגישה הפשוטה ביותר
+\begin_layout Proposition
+
+\emph on
+\noun on
+הגישה
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
+
+\emph on
+\noun on
 \begin_inset CommandInset href
 LatexCommand href
 name "python_code/learning/graph/edges_logics/rating_diff.py"
@@ -1747,35 +1753,10 @@ literal "false"
 
  יהיה ההפרש בין הדירוגים של הסרטים )במידה ויש להם שחקנים משותפים(.
  כיוון שאנחנו רוצים שציון גדול יותר יעיד על קשר חזק יותר, וההפרש בין הציונים
- חסום )
-\numeric on
-10
-\family roman
-\series medium
+ חסום )10
 \shape up
-\size normal
-\emph off
-\numeric off
-\bar no
-\strikeout off
-\xout off
-\uuline off
-\uwave off
-\noun off
-\color none
  
-\family default
-\series default
 \shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\xout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
 הוא הציון המקסימלי(, נכתוב כך:
 \begin_inset Formula 
 \[
@@ -1791,11 +1772,22 @@ w_{i,j}=\begin{cases}
 \end_layout
 
 \begin_layout Standard
-גישה נוספת 
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proposition
+
+\noun on
+גישה נוספת
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
+
+\noun on
 \begin_inset CommandInset href
 LatexCommand href
 name "python_code/learning/graph/edges_logics/cast_count.py"
@@ -1809,7 +1801,7 @@ literal "false"
 
 \end_inset
 
- מגדירה את הציון בין הסרט 
+ מגדירה את הציון לקשת בין הסרט 
 \begin_inset Formula $M_{i}$
 \end_inset
 
@@ -1821,10 +1813,12 @@ literal "false"
 \begin_inset Quotes erd
 \end_inset
 
-י:
+י כמות השחקנים המשותפים שלהם:
 \end_layout
 
-\begin_layout Standard
+\begin_layout Proposition
+
+\noun on
 \begin_inset Formula 
 \[
 w_{i,j}=|C_{i}\cap C_{j}|
@@ -1835,38 +1829,18 @@ w_{i,j}=|C_{i}\cap C_{j}|
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Proposition
+
+\noun on
 הגישה הזו נתנה תוצאות טובות, אבל גישה בריאה יותר היא לתת ציון שונה לכל אחד
  מהשחקנים בסרט.
  הסיבה היא שמניתוח ה
 \lang english
 dataset
-\family roman
-\series medium
 \shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\xout off
-\uuline off
-\uwave off
-\noun off
-\color none
 \lang hebrew
  
-\family default
-\series default
 \shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\xout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
 עולה באופן מאוד ברור שרשימת השחקנים בסרט ממויינת, כלומר ככל שהשחקן מופיע
  מוקדם יותר ברשימה - כך חשיבותו בסרט עולה.
 \end_layout
@@ -1885,12 +1859,16 @@ literal "false"
 .
 \end_layout
 
-\begin_layout Standard
-לכן, הגרסה המתקדמת יותר
+\begin_layout Proposition
+
+\noun on
+הגרסה המתקדמת יותר
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
+
+\noun on
 \begin_inset CommandInset href
 LatexCommand href
 name "python_code/learning/graph/edges_logics/cast_priority_factor.py"
@@ -1904,7 +1882,11 @@ literal "false"
 
 \end_inset
 
- של המשקל הזה תהיה תוך הנחה שיש חשיבות לסדר בקבוצה 
+ של המשקל בהצעה 
+\numeric on
+2
+\numeric off
+ תהיה תוך הנחה שיש חשיבות לסדר בקבוצה 
 \begin_inset Formula $C_{i}$
 \end_inset
 
@@ -1920,10 +1902,6 @@ j & \exists j:c_{i}^{j}=c\\
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 כלומר 
 \begin_inset Formula $C(i,c)$
 \end_inset
@@ -1945,10 +1923,6 @@ w_{i,j}=\sum_{c\in C_{i}\cap C_{j}}1+2^{-C(i,c)}+2^{-C(j,c)}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 כלומר בעבור שני סרטים 
 \begin_inset Formula $C_{1}=\{a,b,c\}\ \ C_{2}=\{a,c\}$
 \end_inset
@@ -1961,11 +1935,22 @@ w_{i,j}=\sum_{c\in C_{i}\cap C_{j}}1+2^{-C(i,c)}+2^{-C(j,c)}
 \end_layout
 
 \begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proposition
+
+\noun on
 היוריסטיקה נוספת שנרצה להוסיף היא התייחסות לסוג הסרט
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
+
+\noun on
 \begin_inset CommandInset href
 LatexCommand href
 name "python_code/learning/graph/edges_logics/category.py"
@@ -3841,37 +3826,32 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-כעת על מנת לייצר מה
-\lang english
-clusters
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\xout off
-\uuline off
-\uwave off
-\noun off
-\color none
-\lang hebrew
+היות ואנחנו מקבלים אשכולות רבים מהאלגוריתם, אך המטרה הכללית שלנו היא להבחין
+ בין שתי הקבוצות המבוקשות, צריך למצוא קריטריון לאבחנה בין האשכולות - כלומר
+ למצוא דרך לשייך אשכולות מסויימים לקבוצת 
+\begin_inset Quotes eld
+\end_inset
+
+סרטים ששווה לראות
+\begin_inset Quotes erd
+\end_inset
+
+.
+ המטרה היא למצוא את הפרמטר הנכון וערך הסף הנכון שבעזרתו נוכל להבחין בין
+ האשכולות, כדי שנוכל להגיד שכל אשכול העונה על תנאי סף בפרמטר - שייך לקבוצת
  
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\xout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-את שתי הקבוצות המבוקשות, צריך למצוא קריטריון לאבחנה בין הקבוצות.
- הרצתי את האלגוריתם מספר פעמים, בכל פעם עם 
+\begin_inset Quotes eld
+\end_inset
+
+סרטים ששווה לראות
+\begin_inset Quotes erd
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+הרצתי את האלגוריתם מספר פעמים, בכל פעם עם 
 \begin_inset Formula $\gamma$
 \end_inset
 
@@ -4097,7 +4077,7 @@ precision
 \uwave default
 \noun default
 \color inherit
-הגדול ביותר )כל עוד ה
+הגדול ביותר )כמות הסרטים זוכי האוסקר ביחס לגודל הקבוצה(, כל עוד ה
 \family roman
 \series medium
 \shape up
@@ -4179,8 +4159,33 @@ recall
 \noun default
 \color inherit
 50%
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
 \numeric off
-(
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+)כלומר כל עוד הקבוצה מכילה לפחות חצי מכמות הסרטים זוכי האוסקר(
 \begin_inset Foot
 status open
 
@@ -4199,7 +4204,10 @@ literal "false"
 \end_inset
 
 .
- כיוון שיש לנו מספר סופי של אשכולות בכל פעם, מספיק לרוץ עליהם בצורה ממויינת
+\begin_inset Newline newline
+\end_inset
+
+כיוון שיש לנו מספר סופי של אשכולות בכל פעם, מספיק לרוץ עליהם בצורה ממויינת
  לפי הדירוג המקסימלי בכל אשכול, בסדר יורד.
  במילים אחרות:
 \begin_inset Newline newline
@@ -4213,7 +4221,7 @@ literal "false"
 \begin_inset Formula $S_{i}$
 \end_inset
 
- דעירוג הסרט ה 
+ דירוג הסרט ה 
 \begin_inset Formula $i$
 \end_inset
 
@@ -5852,8 +5860,24 @@ Louvain
 \end_inset
 
  מכלל הסרטים זוכי האוסקר בנטפליקס, ודירוגיהם שונים מהותית מדירוגי יתר הסרטים,
- וזאת בהתבססות על שחקנים משותפים בין סרטים בלבד.
- 
+ וזאת בהתבססות על השחקנים משותפים בין הסרטים.
+ הראתי במהלך הדרך שאכן מדובר בהפרדה משמעותית מבחינה סטטיסטית בין הסרטים,
+ ובסופו של דבר ההפרדה הניבה תוצאות שהפתיעו אותי לחיוב.
+\end_layout
+
+\begin_layout Standard
+התרשים הבא מציג את היסטוגרמת הדירוגים של סרטים בכל אחת מהקבוצות.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename louvain-hist-groups.png
+	width 30page%
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5867,9 +5891,9 @@ Louvain
 \end_inset
 
 .
- לאחר הפעלת התהליך, קיבלנו הפרדה משמעותית על גרף הקשרים בין הסרטים המבוססים
- על שחקניהם, כך שבסופו של דבר קיבלנו קבוצת סרטים המכילה את מרבית הסרטים
- זוכי האוסקר.
+ לאחר מימוש התהליך, קיבלנו הפרדה משמעותית על גרף הקשרים בין הסרטים המבוססים
+ על שחקניהם, כך שבסופו של דבר קיבלנו תת קבוצה המכילה את מרבית הסרטים זוכי
+ האוסקר.
 \end_layout
 
 \end_body
